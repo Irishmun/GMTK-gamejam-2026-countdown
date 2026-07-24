@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://c2qerjwakoag2"]
+
+[ext_resource type="PackedScene" uid="uid://cri4tij7qweto" path="res://prefabs/ent_player.tscn" id="2_h70pd"]
+[ext_resource type="PackedScene" uid="uid://3gn55183ed4c" path="res://prefabs/ent_button_start.tscn" id="2_w7tdv"]
+[ext_resource type="PackedScene" uid="uid://b8h8n6n7cf3ee" path="res://prefabs/ent_button_quit.tscn" id="3_l7tes"]
+[ext_resource type="PackedScene" uid="uid://cksr1ayu2yeyr" path="res://prefabs/ent_button_option.tscn" id="4_oma0l"]
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="5_l7tes"]
+[ext_resource type="Texture2D" uid="uid://rgw14pggpgx2" path="res://Assets/Sprites/main_menu_back.png" id="6_2xyme"]
+[ext_resource type="Script" uid="uid://dadt2vfsfi8h1" path="res://source/Handlers/MainMenuButtonHandler.cs" id="7_oma0l"]
+[ext_resource type="Texture2D" uid="uid://6ddjwjnvrf54" path="res://Assets/Sprites/wasd_move.png" id="8_1l3gk"]
+[ext_resource type="PackedScene" uid="uid://pi8lg1sfagre" path="res://prefabs/prop_clock.tscn" id="9_2xyme"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r51m6"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tl32x"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w7tdv"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h70pd"]
+normal = Vector2(-1, 0)
+
+[node name="hub_main" type="Node2D" unique_id=863028367]
+y_sort_enabled = true
+
+[node name="ButtonHandler" type="Node" parent="." unique_id=52559361]
+script = ExtResource("7_oma0l")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1617737714]
+z_index = -4096
+texture_filter = 1
+material = ExtResource("5_l7tes")
+position = Vector2(200, 120)
+texture = ExtResource("6_2xyme")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1816431166]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1257554228]
+position = Vector2(200, 240)
+shape = SubResource("WorldBoundaryShape2D_r51m6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=671148136]
+position = Vector2(200, 0)
+shape = SubResource("WorldBoundaryShape2D_tl32x")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=165836053]
+position = Vector2(0, 120)
+shape = SubResource("WorldBoundaryShape2D_w7tdv")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1891642042]
+position = Vector2(400, 120)
+shape = SubResource("WorldBoundaryShape2D_h70pd")
+
+[node name="ent_button_start" parent="." unique_id=1697879174 instance=ExtResource("2_w7tdv")]
+position = Vector2(96, 136)
+
+[node name="ent_button_quit" parent="." unique_id=838103767 instance=ExtResource("3_l7tes")]
+position = Vector2(200, 208)
+loadTime = 2.0
+
+[node name="ent_button_option" parent="." unique_id=1917283563 instance=ExtResource("4_oma0l")]
+position = Vector2(320, 136)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=664773616]
+material = ExtResource("5_l7tes")
+position = Vector2(64, 56)
+texture = ExtResource("8_1l3gk")
+
+[node name="ent_clock" parent="." unique_id=1494230456 instance=ExtResource("9_2xyme")]
+position = Vector2(320, 88)
+
+[node name="ent_player" parent="." unique_id=2023939700 instance=ExtResource("2_h70pd")]
+position = Vector2(200, 109)
+
+[connection signal="ButtonActivated" from="ent_button_start" to="ButtonHandler" method="HandleButtonActivated"]
+[connection signal="ButtonActivated" from="ent_button_quit" to="ButtonHandler" method="HandleButtonActivated"]
+[connection signal="ButtonActivated" from="ent_button_option" to="ButtonHandler" method="HandleButtonActivated"]

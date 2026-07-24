@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bm0yu5tgmwg30"]
+
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_rshg0"]
+[ext_resource type="Texture2D" uid="uid://y8v8etn2npdx" path="res://Assets/Sprites/final_back.png" id="2_6nxy5"]
+[ext_resource type="Texture2D" uid="uid://blq3ijcbcoqu3" path="res://Assets/Sprites/final_fore.png" id="3_k5rlx"]
+[ext_resource type="PackedScene" uid="uid://1vph82bry31s" path="res://prefabs/prop_pedestal.tscn" id="4_irrtt"]
+[ext_resource type="PackedScene" uid="uid://cri4tij7qweto" path="res://prefabs/ent_player.tscn" id="5_5tc5l"]
+[ext_resource type="Script" uid="uid://6pdrf35y8306" path="res://source/entities/PlayerFollowerCamera.cs" id="5_adb0c"]
+[ext_resource type="Texture2D" uid="uid://dnb01sab61r0k" path="res://Assets/Sprites/sun.png" id="6_adb0c"]
+[ext_resource type="PackedScene" uid="uid://cvwarbda5laob" path="res://prefabs/ent_hourglass.tscn" id="6_es1t7"]
+[ext_resource type="FontFile" uid="uid://nf0o5d7jdf5b" path="res://Assets/fonts/CASTELAR.TTF" id="7_5tc5l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r51m6"]
+font = ExtResource("7_5tc5l")
+font_size = 73
+font_color = Color(0.9411765, 0.9647059, 0.9411765, 1)
+outline_size = 8
+outline_color = Color(0.13333334, 0.13725491, 0.13725491, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r51m6"]
+size = Vector2(1, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0odhe"]
+size = Vector2(1, 20)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r51m6"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_irrtt"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5tc5l"]
+normal = Vector2(-1, 0)
+
+[node name="ep1_cliffside" type="Node2D" unique_id=110292272]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=955814951]
+z_index = -2
+material = ExtResource("1_rshg0")
+position = Vector2(400, 120)
+texture = ExtResource("2_6nxy5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1346098258]
+material = ExtResource("1_rshg0")
+position = Vector2(400, 120)
+texture = ExtResource("3_k5rlx")
+
+[node name="PropPedestal" parent="." unique_id=502523636 instance=ExtResource("4_irrtt")]
+position = Vector2(1064, 188)
+
+[node name="AnimatableBody2D" type="CharacterBody2D" parent="." unique_id=1373353643 node_paths=PackedStringArray("followTrigger")]
+script = ExtResource("5_adb0c")
+followTrigger = NodePath("Camera2D/Area2D")
+
+[node name="Camera2D" type="Camera2D" parent="AnimatableBody2D" unique_id=99121211]
+position = Vector2(200, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/Camera2D" unique_id=1361285367]
+z_index = -1
+material = ExtResource("1_rshg0")
+position = Vector2(0, 48)
+texture = ExtResource("6_adb0c")
+
+[node name="Label" type="Label" parent="AnimatableBody2D/Camera2D/Sprite2D" unique_id=877715427]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "99"
+label_settings = SubResource("LabelSettings_r51m6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="AnimatableBody2D/Camera2D" unique_id=1179117847]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Camera2D/Area2D" unique_id=957787123]
+shape = SubResource("RectangleShape2D_r51m6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=863303349]
+position = Vector2(399.5, 120)
+shape = SubResource("RectangleShape2D_0odhe")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=905616256]
+position = Vector2(0.5, 120)
+shape = SubResource("RectangleShape2D_0odhe")
+
+[node name="ent_player" parent="." unique_id=2023939700 instance=ExtResource("5_5tc5l")]
+position = Vector2(51, 188)
+sideScroller = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=408826381]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1016407880]
+position = Vector2(0, 188)
+shape = SubResource("WorldBoundaryShape2D_r51m6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=935370083]
+position = Vector2(0, 188)
+shape = SubResource("WorldBoundaryShape2D_irrtt")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1524712042]
+position = Vector2(1200, 188)
+shape = SubResource("WorldBoundaryShape2D_5tc5l")
+
+[node name="ent_hourglass" parent="." unique_id=277513853 instance=ExtResource("6_es1t7")]
+position = Vector2(1064, 180)
+
+[editable path="ent_hourglass"]

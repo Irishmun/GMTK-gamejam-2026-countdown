@@ -1,0 +1,22 @@
+Countdown timer always present
+
+traverse game to turn off timer
+
+various parts are locked behind timer countdown (items and stuff persist)
+
+if timer reaches 0, game over, reset.
+
+
+
+
+doors locked behind timer (either open until, after, or between time)
+bridges collapse after timer reaches X
+[] available whenever the timer has X in it
+
+
+
+
+
+
+
+Font: castellar

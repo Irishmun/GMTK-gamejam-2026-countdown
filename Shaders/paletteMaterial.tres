@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://drdyrxvsowpgd"]
+
+[ext_resource type="Shader" uid="uid://b06tr3by6hltp" path="res://Shaders/PaletteSwap.gdshader" id="1_hgr08"]
+
+[resource]
+shader = ExtResource("1_hgr08")
+shader_parameter/base_A = Color(0.94, 0.96, 0.94, 1)
+shader_parameter/base_B = Color(0.13, 0.13, 0.13, 1)
+shader_parameter/replace_A = Color(0.94, 0.96, 0.94, 1)
+shader_parameter/replace_B = Color(0.13, 0.13, 0.13, 1)

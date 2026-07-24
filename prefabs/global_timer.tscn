@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b8whm5tgiivw1"]
+
+[ext_resource type="Script" uid="uid://b5f3w6bmcl8sv" path="res://source/GlobalTime.cs" id="1_ruurm"]
+
+[node name="global_timer" type="Node" unique_id=1198507648 node_paths=PackedStringArray("timer")]
+script = ExtResource("1_ruurm")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="." unique_id=104452076]

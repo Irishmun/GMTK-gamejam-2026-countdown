@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Countdown", "Countdown.csproj", "{82561D20-02B3-456E-BB81-8F875FF8E4A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82561D20-02B3-456E-BB81-8F875FF8E4A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82561D20-02B3-456E-BB81-8F875FF8E4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82561D20-02B3-456E-BB81-8F875FF8E4A6}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{82561D20-02B3-456E-BB81-8F875FF8E4A6}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{82561D20-02B3-456E-BB81-8F875FF8E4A6}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{82561D20-02B3-456E-BB81-8F875FF8E4A6}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://3gn55183ed4c"]
+
+[ext_resource type="Script" uid="uid://i8nfes2wtipf" path="res://source/entities/button/ButtonArea.cs" id="1_3k2gt"]
+[ext_resource type="Texture2D" uid="uid://djdxxd8ltx5cg" path="res://Assets/Sprites/Button_Start.png" id="2_3k2gt"]
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="4_i8lwh"]
+
+[sub_resource type="Animation" id="Animation_jnyp2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(128, 0, 128, 96)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_otcv1"]
+resource_name = "pressed"
+length = 0.12500417039208114
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.041726146, 0.08345229),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.041666668, 0.083333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_cr6b1"]
+resource_name = "released"
+length = 0.12500417039208114
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.041666668, 0.083333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.041666668, 0.083333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7sya"]
+_data = {
+&"RESET": SubResource("Animation_jnyp2"),
+&"pressed": SubResource("Animation_otcv1"),
+&"released": SubResource("Animation_cr6b1")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r51m6"]
+size = Vector2(118, 26)
+
+[node name="ent_button_start" type="Area2D" unique_id=1697879174 node_paths=PackedStringArray("animationPlayer", "loadedSprite")]
+script = ExtResource("1_3k2gt")
+animationPlayer = NodePath("AnimationPlayer")
+buttonName = "BT_START"
+loadedSprite = NodePath("Sprite2D2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1510356804]
+z_index = -1
+texture_filter = 1
+material = ExtResource("4_i8lwh")
+texture = ExtResource("2_3k2gt")
+vframes = 3
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 96)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2026237749]
+libraries/ = SubResource("AnimationLibrary_u7sya")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=479445110]
+z_index = -1
+texture_filter = 1
+material = ExtResource("4_i8lwh")
+texture = ExtResource("2_3k2gt")
+vframes = 3
+region_enabled = true
+region_rect = Rect2(128, 0, 128, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1652379880]
+shape = SubResource("RectangleShape2D_r51m6")

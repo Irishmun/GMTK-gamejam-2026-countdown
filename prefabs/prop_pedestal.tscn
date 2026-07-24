@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://1vph82bry31s"]
+
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_mp3fl"]
+[ext_resource type="Texture2D" uid="uid://bgikl85747sft" path="res://Assets/Sprites/pedestal.png" id="2_foj8h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r51m6"]
+size = Vector2(46, 3)
+
+[node name="PropPedestal" type="StaticBody2D" unique_id=502523636]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=773005015]
+material = ExtResource("1_mp3fl")
+position = Vector2(0, -8)
+texture = ExtResource("2_foj8h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=242672040]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_r51m6")
