@@ -1,9 +1,18 @@
 [gd_scene format=3 uid="uid://b8whm5tgiivw1"]
 
 [ext_resource type="Script" uid="uid://b5f3w6bmcl8sv" path="res://source/GlobalTime.cs" id="1_ruurm"]
+[ext_resource type="Script" uid="uid://bqas84g5lwguv" path="res://source/entities/YouLose.cs" id="2_2xfb8"]
 
 [node name="global_timer" type="Node" unique_id=1198507648 node_paths=PackedStringArray("timer")]
 script = ExtResource("1_ruurm")
+startTime = 300
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="." unique_id=104452076]
+autostart = true
+
+[node name="Node" type="Node" parent="." unique_id=1832495765]
+script = ExtResource("2_2xfb8")
+scene = "uid://bouck7u1vxq2m"
+
+[connection signal="TimeIsUp" from="." to="Node" method="Instance_TimeIsUp"]

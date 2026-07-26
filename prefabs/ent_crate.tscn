@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://1kl7o681mv3e"]
+
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_3sypl"]
+[ext_resource type="Script" uid="uid://cawg2mialawg2" path="res://source/entities/Interactable.cs" id="1_4j5bw"]
+[ext_resource type="Texture2D" uid="uid://dve3ksdxykpvi" path="res://Assets/Sprites/crate.png" id="2_4j5bw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpq1c"]
+size = Vector2(12, 12)
+
+[node name="ent_crate" type="AnimatableBody2D" unique_id=1279591209]
+script = ExtResource("1_4j5bw")
+CanInteract = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=624226791]
+material = ExtResource("1_3sypl")
+position = Vector2(0, -6)
+texture = ExtResource("2_4j5bw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=286226859]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_hpq1c")

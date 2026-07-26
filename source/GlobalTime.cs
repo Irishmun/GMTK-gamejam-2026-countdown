@@ -2,6 +2,8 @@ using Godot;
 
 public partial class GlobalTime : Node
 {
+    public static GlobalTime Instance { get; private set; }
+
     [Signal] public delegate void TimeIsUpEventHandler();
     [Signal] public delegate void TimeLeftEventHandler(int time);
 
@@ -9,6 +11,11 @@ public partial class GlobalTime : Node
     [Export] private Timer timer;
 
     private int _currentTime;
+
+    public override void _EnterTree()
+    {
+        Instance = this;
+    }
 
     public override void _Ready()
     {
@@ -19,6 +26,7 @@ public partial class GlobalTime : Node
     private void Timer_Timeout()
     {
         _currentTime -= 1;
+        GD.Print("Time left: " + _currentTime.ToString());
         if (_currentTime < 0)
         {
             EmitSignalTimeIsUp();
@@ -38,11 +46,15 @@ public partial class GlobalTime : Node
         timer.Stop();
     }
 
-    public void ResetTimer()
+    public void ResetTimer(bool stoptimer = false)
     {
-        StopTimer();
+        if (stoptimer)
+        {
+            StopTimer();
+        }
         _currentTime = startTime;
     }
 
 
+    public int CurrentTime => _currentTime;
 }

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://do5ak0wjv183m"]
+
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="2_solfe"]
+[ext_resource type="Texture2D" uid="uid://dacewjmdtwmni" path="res://Assets/Sprites/button_switches.png" id="3_vaflo"]
+[ext_resource type="Script" uid="uid://o7pfvjke77u8" path="res://source/entities/button/ToggleSwitch.cs" id="4_solfe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpq1c"]
+size = Vector2(14, 14)
+
+[node name="ent_switch" type="Area2D" unique_id=1722853475 node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_solfe")
+sprite = NodePath("Sprite2D")
+releasedFrame = 2
+pressedFrame = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1559036938]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_solfe")
+texture = ExtResource("3_vaflo")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=958149938]
+shape = SubResource("RectangleShape2D_hpq1c")

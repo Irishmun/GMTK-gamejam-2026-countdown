@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://rgw14pggpgx2" path="res://Assets/Sprites/main_menu_back.png" id="6_2xyme"]
 [ext_resource type="Script" uid="uid://dadt2vfsfi8h1" path="res://source/Handlers/MainMenuButtonHandler.cs" id="7_oma0l"]
 [ext_resource type="Texture2D" uid="uid://6ddjwjnvrf54" path="res://Assets/Sprites/wasd_move.png" id="8_1l3gk"]
+[ext_resource type="Texture2D" uid="uid://bbm4m27t4dcwe" path="res://Assets/Sprites/buttons.png" id="8_nhygy"]
 [ext_resource type="PackedScene" uid="uid://pi8lg1sfagre" path="res://prefabs/prop_clock.tscn" id="9_2xyme"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r51m6"]
@@ -26,6 +27,7 @@ y_sort_enabled = true
 
 [node name="ButtonHandler" type="Node" parent="." unique_id=52559361]
 script = ExtResource("7_oma0l")
+mainScenePath = "uid://bouck7u1vxq2m"
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1617737714]
 z_index = -4096
@@ -53,19 +55,24 @@ position = Vector2(400, 120)
 shape = SubResource("WorldBoundaryShape2D_h70pd")
 
 [node name="ent_button_start" parent="." unique_id=1697879174 instance=ExtResource("2_w7tdv")]
-position = Vector2(96, 136)
+position = Vector2(96, 152)
 
 [node name="ent_button_quit" parent="." unique_id=838103767 instance=ExtResource("3_l7tes")]
-position = Vector2(200, 208)
+position = Vector2(312, 152)
 loadTime = 2.0
 
 [node name="ent_button_option" parent="." unique_id=1917283563 instance=ExtResource("4_oma0l")]
-position = Vector2(320, 136)
+position = Vector2(484, 136)
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=664773616]
 material = ExtResource("5_l7tes")
 position = Vector2(64, 56)
 texture = ExtResource("8_1l3gk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=587877939]
+material = ExtResource("5_l7tes")
+position = Vector2(81, 82)
+texture = ExtResource("8_nhygy")
 
 [node name="ent_clock" parent="." unique_id=1494230456 instance=ExtResource("9_2xyme")]
 position = Vector2(320, 88)

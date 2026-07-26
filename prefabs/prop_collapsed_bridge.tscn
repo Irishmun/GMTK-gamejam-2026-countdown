@@ -1,0 +1,219 @@
+[gd_scene format=3 uid="uid://c8up2jfwcekcn"]
+
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_c3qp5"]
+[ext_resource type="Script" uid="uid://3raf7yrar6wl" path="res://source/entities/timebound/CollapsingBridge.cs" id="1_fac88"]
+[ext_resource type="Texture2D" uid="uid://5ihk1yfjn5to" path="res://Assets/Sprites/collapsed bridge.png" id="2_fac88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fac88"]
+size = Vector2(4, 64)
+
+[sub_resource type="Animation" id="Animation_c3qp5"]
+resource_name = "Collapse"
+length = 0.2500041741173714
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.20833333, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D3:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody2D/CollisionShape2D2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.20833334, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 32), Vector2(0, 36), Vector2(0, 40), Vector2(0, 42)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StaticBody2D2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.20833334, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 32), Vector2(0, 36), Vector2(0, 40), Vector2(0, 42)]
+}
+
+[sub_resource type="Animation" id="Animation_fac88"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D3:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody2D/CollisionShape2D2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 32)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StaticBody2D2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 32), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uipck"]
+_data = {
+&"Collapse": SubResource("Animation_c3qp5"),
+&"RESET": SubResource("Animation_fac88")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8m8b"]
+size = Vector2(48, 44)
+
+[node name="PropCollapsedBridge" type="Node2D" unique_id=1559317596 node_paths=PackedStringArray("animationPlayer", "playerOnBridge")]
+script = ExtResource("1_fac88")
+animationPlayer = NodePath("AnimationPlayer")
+playerOnBridge = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=203716184]
+material = ExtResource("1_c3qp5")
+position = Vector2(0, 32)
+texture = ExtResource("2_fac88")
+hframes = 2
+vframes = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1758692120]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=64050715]
+position = Vector2(-30, 32)
+shape = SubResource("RectangleShape2D_fac88")
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1932793264]
+position = Vector2(30, 32)
+shape = SubResource("RectangleShape2D_fac88")
+disabled = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1712952480]
+material = ExtResource("1_c3qp5")
+position = Vector2(0, 32)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1637800045]
+position = Vector2(0, -19)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_fac88")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1280612365]
+position = Vector2(0, 18)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_fac88")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1203583830]
+libraries/ = SubResource("AnimationLibrary_uipck")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1456764605]
+position = Vector2(0, 32)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=495587307]
+shape = SubResource("RectangleShape2D_k8m8b")
+disabled = true

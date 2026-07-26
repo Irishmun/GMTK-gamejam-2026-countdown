@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://budauofl62hrl"]
+
+[ext_resource type="Script" uid="uid://ceysnuwqq18o6" path="res://source/entities/button/ButtonSwitch.cs" id="1_jq77e"]
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_oll28"]
+[ext_resource type="Texture2D" uid="uid://dacewjmdtwmni" path="res://Assets/Sprites/button_switches.png" id="2_jq77e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpq1c"]
+size = Vector2(14, 14)
+
+[node name="ent_button" type="Area2D" unique_id=1722853475 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_jq77e")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1559036938]
+z_index = -1
+z_as_relative = false
+material = ExtResource("1_oll28")
+texture = ExtResource("2_jq77e")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=958149938]
+shape = SubResource("RectangleShape2D_hpq1c")

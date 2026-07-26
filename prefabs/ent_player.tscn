@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="2_qujwk"]
 [ext_resource type="Texture2D" uid="uid://poc6mi1umish" path="res://Assets/Sprites/Player.png" id="2_rttsp"]
 [ext_resource type="AudioStream" uid="uid://smdobr2nbxj3" path="res://Assets/sounds/walk.wav" id="4_qujwk"]
+[ext_resource type="Texture2D" uid="uid://by4xfux1lfqeg" path="res://Assets/Sprites/exclamation.png" id="5_78vly"]
 
 [sub_resource type="Animation" id="Animation_rttsp"]
 resource_name = "Idle"
@@ -88,13 +89,48 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_r51m6"]
 radius = 4.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0odhe"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n8wo2"]
+playback_mode = 1
+random_pitch = 1.587401
+streams_count = 1
+stream_0/stream = ExtResource("4_qujwk")
 
-[node name="ent_player" type="CharacterBody2D" unique_id=2023939700 node_paths=PackedStringArray("animationPlayer", "playerSprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sypl"]
+size = Vector2(8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31guq"]
+atlas = ExtResource("5_78vly")
+region = Rect2(0, 0, 4, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wkvi"]
+atlas = ExtResource("5_78vly")
+region = Rect2(4, 0, 4, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpq1c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31guq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wkvi")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="ent_player" type="CharacterBody2D" unique_id=2023939700 node_paths=PackedStringArray("animationPlayer", "playerSprite", "pickupPosition", "dropPosition", "interactArea", "interactSprite")]
 y_sort_enabled = true
+collision_layer = 3
 script = ExtResource("1_rttsp")
+speed = 75.0
 animationPlayer = NodePath("AnimationPlayer")
 playerSprite = NodePath("Sprite2D")
+pickupPosition = NodePath("PickupPosition")
+dropPosition = NodePath("Area2D/DropPosition")
+interactArea = NodePath("Area2D")
+interactSprite = NodePath("AnimatedSprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1039158441]
 y_sort_enabled = true
@@ -118,14 +154,28 @@ shape = SubResource("CircleShape2D_r51m6")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=587029008]
 position = Vector2(0, -8)
-stream = ExtResource("4_qujwk")
+stream = SubResource("AudioStreamRandomizer_n8wo2")
+bus = &"SFX"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1563617290]
 position = Vector2(0, -8)
 current = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1114548951]
+position = Vector2(6, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2075041673]
-position = Vector2(-1, -6)
-shape = SubResource("CircleShape2D_0odhe")
+shape = SubResource("RectangleShape2D_3sypl")
+
+[node name="DropPosition" type="Node2D" parent="Area2D" unique_id=1974603450]
+position = Vector2(6, 8)
+
+[node name="PickupPosition" type="Node2D" parent="." unique_id=1589787132]
+position = Vector2(0, -14)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1657736614]
+visible = false
+position = Vector2(0, -21)
+sprite_frames = SubResource("SpriteFrames_hpq1c")
+autoplay = "default"
+frame_progress = 0.33733746

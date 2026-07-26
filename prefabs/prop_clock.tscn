@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://pi8lg1sfagre"]
 
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_lscad"]
 [ext_resource type="Texture2D" uid="uid://bx14nl2q7hv7u" path="res://Assets/Sprites/clock.png" id="1_v2v4g"]
 [ext_resource type="Texture2D" uid="uid://ddanof3aioa64" path="res://Assets/Sprites/clock-face.png" id="2_pe1fg"]
 [ext_resource type="AudioStream" uid="uid://d1o2go0f7esdk" path="res://Assets/sounds/clock_tick.wav" id="3_pe1fg"]
@@ -107,12 +108,14 @@ size = Vector2(17, 11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2008610263]
 y_sort_enabled = true
+material = ExtResource("1_lscad")
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_knvei")
 autoplay = "default"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1774703861]
 y_sort_enabled = true
+material = ExtResource("1_lscad")
 position = Vector2(0.085, -29.5)
 sprite_frames = SubResource("SpriteFrames_mvmg8")
 autoplay = "default"
@@ -125,4 +128,5 @@ shape = SubResource("RectangleShape2D_r51m6")
 position = Vector2(0, -16)
 stream = ExtResource("3_pe1fg")
 autoplay = true
-max_distance = 64.0
+max_distance = 80.0
+bus = &"Clock"
