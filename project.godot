@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://bscu38jhenw20"
 [autoload]
 
 GlobalTimer="*uid://b8whm5tgiivw1"
+UiSceneLoad="*uid://bbnto0jv37vhg"
 
 [display]
 

@@ -5,11 +5,10 @@
 
 [node name="global_timer" type="Node" unique_id=1198507648 node_paths=PackedStringArray("timer")]
 script = ExtResource("1_ruurm")
-startTime = 300
+startTime = 140
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="." unique_id=104452076]
-autostart = true
 
 [node name="Node" type="Node" parent="." unique_id=1832495765]
 script = ExtResource("2_2xfb8")

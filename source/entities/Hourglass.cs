@@ -12,7 +12,11 @@ public partial class Hourglass : Area2D
 
     public void StopClock()
     {
-        GlobalTime.Instance.StopTimer();
+        GlobalTime.Instance.StopTimer();        
+    }
+
+    public void EmitWin()
+    {
         EmitSignalYouWin();
     }
 }

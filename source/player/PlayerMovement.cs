@@ -14,6 +14,7 @@ public partial class PlayerMovement : CharacterBody2D
     [Export] private Node2D pickupPosition;
     [Export] private Node2D dropPosition;
     [Export] private Area2D interactArea;
+    [Export] private CollisionShape2D interactAreaCollider;
     [Export] private Node2D interactSprite;
 
     private List<Node2D> _interActablesInArea;
@@ -73,7 +74,7 @@ public partial class PlayerMovement : CharacterBody2D
 
         // Get the input direction and handle the movement/deceleration.
         // As good practice, you should replace UI actions with custom gameplay actions.
-        Vector2 direction = Input.GetVector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");//.Normalized();
+        Vector2 direction = sideScroller ? new Vector2(Input.GetAxis("MoveLeft", "MoveRight"), 0) : Input.GetVector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");
 
 
         if (direction != Vector2.Zero)
@@ -119,14 +120,14 @@ public partial class PlayerMovement : CharacterBody2D
     private void SetInteractArea(bool flipped)
     {
 
-        Vector2 interactPos = interactArea.Position;
+        Vector2 interactPos = interactAreaCollider.Position;
         Vector2 dropPos = dropPosition.Position;
         if (flipped && interactPos.X > 0)
         {
             dropPos.X = -dropPos.X;
             dropPosition.Position = dropPos;
             interactPos.X = -interactPos.X;
-            interactArea.Position = interactPos;
+            interactAreaCollider.Position = interactPos;
             return;
         }
         if (!flipped && interactPos.X < 0)
@@ -134,7 +135,7 @@ public partial class PlayerMovement : CharacterBody2D
             dropPos.X = Mathf.Abs(dropPos.X);
             dropPosition.Position = dropPos;
             interactPos.X = Mathf.Abs(interactPos.X);
-            interactArea.Position = interactPos;
+            interactAreaCollider.Position = interactPos;
             return;
         }
     }
@@ -169,5 +170,9 @@ public partial class PlayerMovement : CharacterBody2D
     public void StopMovement()
     {
         _canMove = false;
+    }
+    public void StartMovement()
+    {
+        _canMove = true;
     }
 }

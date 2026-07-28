@@ -18,6 +18,6 @@ public partial class SceneChangeArea : Area2D
 
 		}
 
-		GetTree().ChangeSceneToFile(ScenePath);
+		GetTree().CallDeferred("change_scene_to_file",ScenePath);
     }
 }

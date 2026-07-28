@@ -10,8 +10,9 @@ public partial class MainMenuButtonHandler : Node
         switch (buttonName)
         {
             case "BT_START":
-        GD.Print("Start game: " + buttonName);
-                GetTree().ChangeSceneToFile(mainScenePath);
+                GD.Print("Start game: " + buttonName);
+                SceneChangeUI.Instance.FilledScreen += Instance_FilledScreen;
+                SceneChangeUI.Instance.FillScreen();
                 break;
             case "BT_OPTION":
                 GD.Print("Open Options: " + buttonName);
@@ -22,8 +23,14 @@ public partial class MainMenuButtonHandler : Node
                 GetTree().Quit();
                 break;
             default:
-        GD.Print("Button activated: " + buttonName);
+                GD.Print("Button activated: " + buttonName);
                 break;
         }
+    }
+
+    private void Instance_FilledScreen()
+    {
+        SceneChangeUI.Instance.FilledScreen -= Instance_FilledScreen;
+        GetTree().ChangeSceneToFile(mainScenePath);
     }
 }

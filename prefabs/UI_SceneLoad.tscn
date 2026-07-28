@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://bbnto0jv37vhg"]
+
+[ext_resource type="Script" uid="uid://cf8oyyygp1jh3" path="res://source/UI/SceneChangeUI.cs" id="1_fn1y7"]
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_ltrfi"]
+[ext_resource type="Texture2D" uid="uid://daaixishwy7u4" path="res://Assets/Sprites/dot.png" id="2_fn1y7"]
+
+[sub_resource type="Animation" id="Animation_ywxmu"]
+resource_name = "empty"
+length = 0.500004181567952
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar2:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [24.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EmitEmptiedSignal"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fn1y7"]
+resource_name = "fill"
+length = 0.5833375173848122
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar2:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 24.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5833333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EmitFilledSignal"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ywxmu"]
+_data = {
+&"empty": SubResource("Animation_ywxmu"),
+&"fill": SubResource("Animation_fn1y7")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=449043508]
+
+[node name="Control" type="Control" parent="." unique_id=219259010 node_paths=PackedStringArray("animationPlayer")]
+z_index = 4096
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_fn1y7")
+animationPlayer = NodePath("SubViewportContainer/SubViewport/AnimationPlayer")
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control" unique_id=1685620972]
+top_level = true
+z_index = 4096
+z_as_relative = false
+material = ExtResource("1_ltrfi")
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 240.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" unique_id=362949300]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(400, 240)
+render_target_update_mode = 4
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Control/SubViewportContainer/SubViewport" unique_id=829241915]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 120)
+mouse_filter = 2
+max_value = 24.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("2_fn1y7")
+
+[node name="ProgressBar2" type="TextureProgressBar" parent="Control/SubViewportContainer/SubViewport" unique_id=1109150947]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 120)
+mouse_filter = 2
+max_value = 24.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("2_fn1y7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/SubViewportContainer/SubViewport" unique_id=1235602201]
+libraries/ = SubResource("AnimationLibrary_ywxmu")

@@ -8,6 +8,13 @@ public partial class YouLose : Node
     private void Instance_TimeIsUp()
     {
         GlobalTime.Instance.ResetTimer();
+        SceneChangeUI.Instance.FilledScreen += Instance_FilledScreen;
+        SceneChangeUI.Instance.FillScreen();
+    }
+
+    private void Instance_FilledScreen()
+    {
+        SceneChangeUI.Instance.FilledScreen -= Instance_FilledScreen;
         GetTree().ChangeSceneToFile(scene);
     }
 
