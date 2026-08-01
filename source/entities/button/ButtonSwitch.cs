@@ -9,6 +9,7 @@ public partial class ButtonSwitch : Area2D
     [Export] private bool stayPressed = false;
     [Export] private int releasedFrame = 0;
     [Export] private int pressedFrame = 1;
+    [Export] private AudioStreamPlayer2D audio;
 
     private List<Node> presentBodies;
 
@@ -31,6 +32,7 @@ public partial class ButtonSwitch : Area2D
 
         if (oldCount == 0)
         {
+            audio.Play();
             EmitSignalButtonChanged(true);
             sprite.Frame = pressedFrame;
         }

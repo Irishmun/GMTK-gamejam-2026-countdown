@@ -1,0 +1,363 @@
+[gd_scene format=3 uid="uid://duen61j3h6lwq"]
+
+[ext_resource type="Script" uid="uid://ceysnuwqq18o6" path="res://source/entities/button/ButtonSwitch.cs" id="1_0t50s"]
+[ext_resource type="Script" uid="uid://bp088pvqpp428" path="res://source/entities/options/ColorPickButtons.cs" id="1_d33kx"]
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="2_0scoq"]
+[ext_resource type="Texture2D" uid="uid://pvqak7yh8t8p" path="res://Assets/Sprites/UI_Options.png" id="3_ewouh"]
+[ext_resource type="AudioStream" uid="uid://nxrruvq0ckv0" path="res://Assets/sounds/click.wav" id="5_d33kx"]
+[ext_resource type="Texture2D" uid="uid://cj37vfql4byov" path="res://Assets/Sprites/colors.png" id="6_d33kx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpq1c"]
+size = Vector2(14, 11)
+
+[node name="ent_ColorButton" type="Node2D" unique_id=908148799 node_paths=PackedStringArray("selectors")]
+z_index = -1
+script = ExtResource("1_d33kx")
+selectors = [NodePath("ColorHolder/Color1"), NodePath("ColorHolder/Color2"), NodePath("ColorHolder/Color3"), NodePath("ColorHolder/Color4"), NodePath("ColorHolder/Color5"), NodePath("ColorHolder/Color6"), NodePath("ColorHolder/Color7"), NodePath("ColorHolder/Color8"), NodePath("ColorHolder/Color9"), NodePath("ColorHolder/Color10"), NodePath("ColorHolder/Color11"), NodePath("ColorHolder/Color12"), NodePath("ColorHolder/Color13"), NodePath("ColorHolder/Color14")]
+
+[node name="ent_button" type="Area2D" parent="." unique_id=1722853475 node_paths=PackedStringArray("sprite", "audio")]
+position = Vector2(-80.5, -2)
+script = ExtResource("1_0t50s")
+sprite = NodePath("Sprite2D")
+releasedFrame = 2
+pressedFrame = 3
+audio = NodePath("AudioStreamPlayer2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="ent_button" unique_id=1559036938]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+texture = ExtResource("3_ewouh")
+hframes = 4
+frame = 2
+region_enabled = true
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ent_button" unique_id=958149938]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_hpq1c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ent_button" unique_id=410905602]
+stream = ExtResource("5_d33kx")
+bus = &"SFX"
+
+[node name="ent_button2" type="Area2D" parent="." unique_id=932875247 node_paths=PackedStringArray("sprite", "audio")]
+position = Vector2(80.5, -2)
+script = ExtResource("1_0t50s")
+sprite = NodePath("Sprite2D")
+audio = NodePath("AudioStreamPlayer2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="ent_button2" unique_id=1793823244]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+texture = ExtResource("3_ewouh")
+hframes = 4
+region_enabled = true
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ent_button2" unique_id=24121008]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_hpq1c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ent_button2" unique_id=1551692537]
+stream = ExtResource("5_d33kx")
+bus = &"SFX"
+
+[node name="ColorHolder" type="Node2D" parent="." unique_id=405316009]
+
+[node name="Color1" type="Sprite2D" parent="ColorHolder" unique_id=2057111890]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(-64.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color1" unique_id=644095409]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color2" type="Sprite2D" parent="ColorHolder" unique_id=933468273]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(-54.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color2" unique_id=1413910896]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 1
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color3" type="Sprite2D" parent="ColorHolder" unique_id=898203002]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(-44.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color3" unique_id=1079304211]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 2
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color4" type="Sprite2D" parent="ColorHolder" unique_id=235639395]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(-34.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color4" unique_id=1604053676]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 3
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color5" type="Sprite2D" parent="ColorHolder" unique_id=1253247879]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(-24.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color5" unique_id=28726375]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 4
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color6" type="Sprite2D" parent="ColorHolder" unique_id=634804267]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(-14.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color6" unique_id=386121125]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 5
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color7" type="Sprite2D" parent="ColorHolder" unique_id=1789769724]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(-4.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color7" unique_id=1241090015]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 6
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color8" type="Sprite2D" parent="ColorHolder" unique_id=1352941565]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(5.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color8" unique_id=398236057]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 7
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color9" type="Sprite2D" parent="ColorHolder" unique_id=1139356157]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(15.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color9" unique_id=1803755320]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 8
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color10" type="Sprite2D" parent="ColorHolder" unique_id=1479896064]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(25.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color10" unique_id=2026230986]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 9
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color11" type="Sprite2D" parent="ColorHolder" unique_id=163082984]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(35.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color11" unique_id=1192467499]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 10
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color12" type="Sprite2D" parent="ColorHolder" unique_id=1910306920]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(45.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color12" unique_id=1905907945]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 11
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color13" type="Sprite2D" parent="ColorHolder" unique_id=2126062531]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(55.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color13" unique_id=926968102]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 12
+region_rect = Rect2(16, 16, 64, 16)
+
+[node name="Color14" type="Sprite2D" parent="ColorHolder" unique_id=330648374]
+z_index = -1
+z_as_relative = false
+material = ExtResource("2_0scoq")
+position = Vector2(65.5, -1)
+texture = ExtResource("3_ewouh")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 30, 16, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorHolder/Color14" unique_id=394505874]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+scale = Vector2(6, 8)
+texture = ExtResource("6_d33kx")
+hframes = 4
+vframes = 4
+frame = 13
+region_rect = Rect2(16, 16, 64, 16)
+
+[connection signal="ButtonChanged" from="ent_button" to="." method="DecreaseIndex"]
+[connection signal="ButtonChanged" from="ent_button2" to="." method="IncreaseIndex"]

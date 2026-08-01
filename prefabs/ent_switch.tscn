@@ -3,15 +3,17 @@
 [ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="2_solfe"]
 [ext_resource type="Texture2D" uid="uid://dacewjmdtwmni" path="res://Assets/Sprites/button_switches.png" id="3_vaflo"]
 [ext_resource type="Script" uid="uid://o7pfvjke77u8" path="res://source/entities/button/ToggleSwitch.cs" id="4_solfe"]
+[ext_resource type="AudioStream" uid="uid://nxrruvq0ckv0" path="res://Assets/sounds/click.wav" id="4_vaflo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpq1c"]
 size = Vector2(14, 14)
 
-[node name="ent_switch" type="Area2D" unique_id=1722853475 node_paths=PackedStringArray("sprite")]
+[node name="ent_switch" type="Area2D" unique_id=1722853475 node_paths=PackedStringArray("sprite", "audio")]
 script = ExtResource("4_solfe")
 sprite = NodePath("Sprite2D")
 releasedFrame = 2
 pressedFrame = 3
+audio = NodePath("AudioStreamPlayer2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1559036938]
 z_index = -1
@@ -24,3 +26,7 @@ frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=958149938]
 shape = SubResource("RectangleShape2D_hpq1c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1583956378]
+stream = ExtResource("4_vaflo")
+bus = &"SFX"

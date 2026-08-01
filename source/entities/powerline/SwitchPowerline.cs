@@ -25,7 +25,7 @@ public partial class SwitchPowerline : BasePowerline
 
     private void DependantPowerline_PowerStateChanged(bool powered)
     {
-        GD.Print("powered: " + powered);
+        GD.Print(this.Name + " powered: " + powered);
         CheckAllPowered();
     }
 

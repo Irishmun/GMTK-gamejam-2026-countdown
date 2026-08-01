@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_512ek"]
 [ext_resource type="Script" uid="uid://cagf3naye28jn" path="res://source/entities/PoweredGate.cs" id="1_qfnln"]
 [ext_resource type="Texture2D" uid="uid://bi3vw78dhsbq" path="res://Assets/Sprites/spikes.png" id="1_wt1xn"]
+[ext_resource type="AudioStream" uid="uid://dgfehrsvl5fj0" path="res://Assets/sounds/button_press.wav" id="4_vnd4p"]
 
 [sub_resource type="Animation" id="Animation_512ek"]
 length = 0.001
@@ -181,6 +182,18 @@ tracks/14/path = NodePath("CollisionShape2D:disabled")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -370,6 +383,18 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.20833333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_qfnln"]
@@ -661,3 +686,7 @@ libraries/ = SubResource("AnimationLibrary_vnd4p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1621107808]
 position = Vector2(51, -8)
 shape = SubResource("RectangleShape2D_wt1xn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=199224817]
+stream = ExtResource("4_vnd4p")
+bus = &"SFX"

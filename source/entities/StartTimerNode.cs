@@ -10,12 +10,10 @@ public partial class StartTimerNode : Node
         playerMovement.StopMovement();
         SceneChangeUI.Instance.EmptiedScreen += Instance_EmptiedScreen;
         SceneChangeUI.Instance.EmptyScreen();
-        GD.Print("timer start");
     }
 
     private void Instance_EmptiedScreen()
     {
-        GD.Print("timer start for real");
         SceneChangeUI.Instance.EmptiedScreen -= Instance_EmptiedScreen;
         playerMovement.StartMovement();
         GlobalTime.Instance.StartTimer();

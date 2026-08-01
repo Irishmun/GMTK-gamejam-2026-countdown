@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://bs46tcns2aiet"]
+
+[ext_resource type="Script" uid="uid://i8nfes2wtipf" path="res://source/entities/button/ButtonArea.cs" id="1_5ufv7"]
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="2_xfsq7"]
+[ext_resource type="Texture2D" uid="uid://d22y555wl0wb8" path="res://Assets/Sprites/Button_Accept.png" id="3_pos5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cs0yj"]
+size = Vector2(96, 26)
+
+[sub_resource type="Animation" id="Animation_jnyp2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_otcv1"]
+resource_name = "pressed"
+length = 0.12500417039208114
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.041726146, 0.08345229),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.041666668, 0.083333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_cr6b1"]
+resource_name = "released"
+length = 0.12500417039208114
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.041666668, 0.083333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.041666668, 0.083333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7sya"]
+_data = {
+&"RESET": SubResource("Animation_jnyp2"),
+&"pressed": SubResource("Animation_otcv1"),
+&"released": SubResource("Animation_cr6b1")
+}
+
+[node name="ent_button_accept" type="Area2D" unique_id=1697879174 node_paths=PackedStringArray("animationPlayer", "loadedSprite")]
+script = ExtResource("1_5ufv7")
+animationPlayer = NodePath("AnimationPlayer")
+buttonName = "BT_ACCEPT"
+loadedSprite = NodePath("Sprite2D2")
+loadTime = 0.5
+loadBaseWidth = 106
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1510356804]
+z_index = -1
+texture_filter = 1
+material = ExtResource("2_xfsq7")
+texture = ExtResource("3_pos5q")
+vframes = 3
+region_enabled = true
+region_rect = Rect2(0, 0, 106, 99)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1652379880]
+shape = SubResource("RectangleShape2D_cs0yj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2026237749]
+libraries/ = SubResource("AnimationLibrary_u7sya")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=479445110]
+z_index = -1
+texture_filter = 1
+material = ExtResource("2_xfsq7")
+texture = ExtResource("3_pos5q")
+vframes = 3
+region_enabled = true
+region_rect = Rect2(106, 0, 106, 99)

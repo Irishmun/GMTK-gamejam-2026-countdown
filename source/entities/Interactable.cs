@@ -11,7 +11,7 @@ public partial class Interactable : Node2D
         //bool bounce = newParent == _oldParent;
         _oldParent = this.GetParent();
         _oldParent.RemoveChild(this);
-        GD.Print($"newParent: {newParent} | this: {this}");
+        //GD.Print($"newParent: {newParent} | this: {this}");
         newParent.AddChild(this);
         //if (bounce)
         //{

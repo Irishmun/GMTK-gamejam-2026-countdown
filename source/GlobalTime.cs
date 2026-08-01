@@ -26,7 +26,7 @@ public partial class GlobalTime : Node
     private void Timer_Timeout()
     {
         _currentTime -= 1;
-        GD.Print("Time left: " + _currentTime.ToString());
+        //GD.Print("Time left: " + _currentTime.ToString());
         if (_currentTime < 0)
         {
             EmitSignalTimeIsUp();

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bb4epib1oae41" path="res://source/entities/timebound/PatienceWall.cs" id="1_7wlaq"]
 [ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="2_6pvnq"]
 [ext_resource type="Texture2D" uid="uid://butlnkcpwa11b" path="res://Assets/Sprites/wall_wide.png" id="3_7wlaq"]
+[ext_resource type="AudioStream" uid="uid://dgfehrsvl5fj0" path="res://Assets/sounds/button_press.wav" id="4_6pvnq"]
 
 [sub_resource type="Animation" id="Animation_2a0fs"]
 length = 0.001
@@ -25,6 +26,18 @@ tracks/1/path = NodePath("CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -59,6 +72,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_w60i3"]
 resource_name = "retract"
@@ -87,6 +112,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrdb5"]
@@ -117,3 +154,8 @@ libraries/ = SubResource("AnimationLibrary_jrdb5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=172033146]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_hpq1c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=321887677]
+stream = ExtResource("4_6pvnq")
+pitch_scale = 0.3
+bus = &"SFX"

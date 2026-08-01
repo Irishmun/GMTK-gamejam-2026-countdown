@@ -18,7 +18,6 @@ public partial class RoomTransitionCamera : Node
         { return; }
 
         Vector2 dir = camera.GlobalPosition.DirectionTo(body.GlobalPosition) / camera.GetViewportRect().Size;
-        GD.Print("dir: " + dir);
         Vector2 pos = camera.GlobalPosition;
         if (dir.Abs().X > dir.Abs().Y)//either left or right
         {

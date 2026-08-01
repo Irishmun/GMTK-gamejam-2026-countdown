@@ -54,7 +54,6 @@ public partial class CollapsingBridge : Node2D
         UnSubScribe(true);
         Vector2 globalPos = node.GlobalPosition;
         _oldPlayerParent = node.GetParent();
-        GD.Print("parent is null:" + _oldPlayerParent == null);
         _oldPlayerParent.RemoveChild(node);
         newParent.AddChild(node);
         node.GlobalPosition = globalPos;

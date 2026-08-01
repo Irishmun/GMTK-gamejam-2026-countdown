@@ -16,7 +16,7 @@ public partial class ButtonArea : Area2D
     [Export] private float unloadTime = 0.25f;
 
 
-    private int _loadBaseWidth = 128;
+    [Export] private int loadBaseWidth = 128;
     private float _t = 0;
     private bool _fired = false;
 
@@ -69,13 +69,13 @@ public partial class ButtonArea : Area2D
 
         _t = Mathf.Clamp(_t, 0, 1);
 
-        float width = (float)_loadBaseWidth * (float)_t;
+        float width = (float)loadBaseWidth * (float)_t;
 
         Rect2 rect = loadedSprite.RegionRect;
         Rect2 newRect = new Rect2(rect.Position, width, rect.Size.Y);
         loadedSprite.RegionRect = newRect;
         Vector2 off = loadedSprite.Offset;
-        off.X = (-_loadBaseWidth + width) * 0.5f;
+        off.X = (-loadBaseWidth + width) * 0.5f;
         loadedSprite.Offset = off;
 
         if (_t >= 1 && _playerIsOn && _fired == false)

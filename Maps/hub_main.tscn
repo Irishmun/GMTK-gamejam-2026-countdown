@@ -1,85 +1,286 @@
-[gd_scene format=3 uid="uid://c2qerjwakoag2"]
+[gd_scene format=4 uid="uid://c2qerjwakoag2"]
 
 [ext_resource type="PackedScene" uid="uid://cri4tij7qweto" path="res://prefabs/ent_player.tscn" id="2_h70pd"]
 [ext_resource type="PackedScene" uid="uid://3gn55183ed4c" path="res://prefabs/ent_button_start.tscn" id="2_w7tdv"]
 [ext_resource type="PackedScene" uid="uid://b8h8n6n7cf3ee" path="res://prefabs/ent_button_quit.tscn" id="3_l7tes"]
-[ext_resource type="PackedScene" uid="uid://cksr1ayu2yeyr" path="res://prefabs/ent_button_option.tscn" id="4_oma0l"]
 [ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="5_l7tes"]
 [ext_resource type="Texture2D" uid="uid://rgw14pggpgx2" path="res://Assets/Sprites/main_menu_back.png" id="6_2xyme"]
 [ext_resource type="Script" uid="uid://dadt2vfsfi8h1" path="res://source/Handlers/MainMenuButtonHandler.cs" id="7_oma0l"]
 [ext_resource type="Texture2D" uid="uid://6ddjwjnvrf54" path="res://Assets/Sprites/wasd_move.png" id="8_1l3gk"]
+[ext_resource type="Texture2D" uid="uid://dnpah0q8leen0" path="res://Assets/Sprites/Sign_Options.png" id="8_b71v1"]
 [ext_resource type="Texture2D" uid="uid://bbm4m27t4dcwe" path="res://Assets/Sprites/buttons.png" id="8_nhygy"]
 [ext_resource type="PackedScene" uid="uid://pi8lg1sfagre" path="res://prefabs/prop_clock.tscn" id="9_2xyme"]
+[ext_resource type="TileSet" uid="uid://mcw8vymwlshl" path="res://Resources/tileset-temple.tres" id="11_b71v1"]
+[ext_resource type="Script" uid="uid://cxooedgg5dusn" path="res://source/player/RoomTransitionCamera.cs" id="12_v8pvl"]
+[ext_resource type="Script" uid="uid://drkhq56wf5ohl" path="res://source/Handlers/SettingsHandler.cs" id="13_dlgkt"]
+[ext_resource type="PackedScene" uid="uid://cm73pfv1b8s7s" path="res://prefabs/Options/ent_OptionSlider.tscn" id="13_fef32"]
+[ext_resource type="PackedScene" uid="uid://brh1uva4euwia" path="res://prefabs/UI/ent_percentage.tscn" id="14_fef32"]
+[ext_resource type="Script" uid="uid://yvsfqbcadv7s" path="res://source/System/Settings.cs" id="14_ibf1v"]
+[ext_resource type="Texture2D" uid="uid://dvm8tw2unhqfy" path="res://Assets/Sprites/dev/colors_and_buttons.png" id="16_1stgn"]
+[ext_resource type="Texture2D" uid="uid://c045ngs04ld13" path="res://Assets/Sprites/UI_Options_Headers.png" id="17_lvk2f"]
+[ext_resource type="Texture2D" uid="uid://c77vcb48q02de" path="res://Assets/Sprites/dev/checkerboard.png" id="18_41sca"]
+[ext_resource type="PackedScene" uid="uid://hh84bgyxrct7" path="res://prefabs/Options/ent_checkbox.tscn" id="19_bdod1"]
+[ext_resource type="PackedScene" uid="uid://do5ak0wjv183m" path="res://prefabs/ent_switch.tscn" id="20_1stgn"]
+[ext_resource type="PackedScene" uid="uid://duen61j3h6lwq" path="res://prefabs/Options/ent_ColorButton.tscn" id="22_c5o78"]
+[ext_resource type="PackedScene" uid="uid://bs46tcns2aiet" path="res://prefabs/Options/ent_button_accept.tscn" id="23_pijyv"]
+[ext_resource type="PackedScene" uid="uid://dw36cew8lmdi5" path="res://prefabs/Options/ent_button_reset.tscn" id="24_r37wx"]
+[ext_resource type="AudioStream" uid="uid://bo648l7fh175w" path="res://Assets/sounds/temp/LaForetdesReves.wav" id="25_sti0v"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r51m6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ejkc"]
+size = Vector2(399, 239)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tl32x"]
-normal = Vector2(0, 1)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w7tdv"]
-normal = Vector2(1, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h70pd"]
-normal = Vector2(-1, 0)
+[sub_resource type="Resource" id="Resource_r51m6"]
+script = ExtResource("14_ibf1v")
+startMaximized = true
+masterVolume = 50.0
+ambientVolume = 50.0
+metadata/_custom_type_script = "uid://yvsfqbcadv7s"
 
 [node name="hub_main" type="Node2D" unique_id=863028367]
 y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1879407522]
+z_index = -1
+material = ExtResource("5_l7tes")
+tile_map_data = PackedByteArray("AAAAAAAAAQAFAAAAAAAYAAAAAQAHAAAAAAAYAA4AAQAHAAIAAAAAAA4AAQAFAAIAAAABAA4AAQAGAAIAAAACAA4AAQAGAAIAAAADAA4AAQAGAAIAAAAEAA4AAQAGAAIAAAAFAA4AAQAGAAIAAAAGAA4AAQAGAAIAAAAHAA4AAQAGAAIAAAAIAA4AAQAGAAIAAAAJAA4AAQAGAAIAAAAKAA4AAQAGAAIAAAALAA4AAQAGAAIAAAAMAA4AAQAGAAIAAAANAA4AAQAGAAIAAAAOAA4AAQAGAAIAAAAPAA4AAQAGAAIAAAAQAA4AAQAGAAIAAAARAA4AAQAGAAIAAAASAA4AAQAGAAIAAAATAA4AAQAGAAIAAAAUAA4AAQAGAAIAAAAVAA4AAQAGAAIAAAAWAA4AAQAGAAIAAAAXAA4AAQAGAAIAAAAAAA0AAQAFAAEAAAAAAAwAAQAFAAEAAAAAAAsAAQAFAAEAAAAAAAoAAQAFAAEAAAAAAAkAAQAFAAEAAAAAAAgAAQAFAAEAAAAAAAcAAQAFAAEAAAAAAAYAAQAFAAEAAAAAAAUAAQAFAAEAAAAAAAQAAQAFAAEAAAAAAAMAAQAFAAEAAAAAAAIAAQAFAAEAAAAAAAEAAQAFAAEAAAABAAAAAQAGAAAAAAACAAAAAQAGAAAAAAADAAAAAQAGAAAAAAAEAAAAAQAGAAAAAAAFAAAAAQAGAAAAAAAGAAAAAQAGAAAAAAAHAAAAAQAGAAAAAAAIAAAAAQAGAAAAAAAJAAAAAQAGAAAAAAAKAAAAAQAGAAAAAAALAAAAAQAGAAAAAAAMAAAAAQAGAAAAAAANAAAAAQAGAAAAAAAOAAAAAQAGAAAAAAAPAAAAAQAGAAAAAAAQAAAAAQAGAAAAAAARAAAAAQAGAAAAAAASAAAAAQAGAAAAAAATAAAAAQAGAAAAAAAUAAAAAQAGAAAAAAAVAAAAAQAGAAAAAAAWAAAAAQAGAAAAAAAXAAAAAQAGAAAAAAAYAAEAAQAHAAEAAAAYAAIAAQAHAAEAAAAYAAMAAQAHAAEAAAAYAAQAAQAFAAQAAAAYAAoAAQAFAAMAAAAYAAsAAQAHAAEAAAAYAAwAAQAHAAEAAAAYAA0AAQAHAAEAAAAZAAQAAQAGAAQAAAAZAAoAAQAGAAMAAAAZAAsAAQAFAAEAAAAZAAwAAQAFAAEAAAAZAA0AAQAFAAEAAAAZAAMAAQAFAAEAAAAZAAIAAQAFAAEAAAAZAAEAAQAFAAEAAAAZAAAAAQAFAAAAAAAZAA4AAQAFAAIAAAAaAA4AAQAGAAIAAAAbAA4AAQAGAAIAAAAcAA4AAQAGAAIAAAAdAA4AAQAGAAIAAAAeAA4AAQAGAAIAAAAfAA4AAQAGAAIAAAAgAA4AAQAGAAIAAAAhAA4AAQAGAAIAAAAiAA4AAQAGAAIAAAAjAA4AAQAGAAIAAAAkAA4AAQAGAAIAAAAlAA4AAQAGAAIAAAAmAA4AAQAGAAIAAAAnAA4AAQAGAAIAAAAoAA4AAQAGAAIAAAApAA4AAQAGAAIAAAAqAA4AAQAGAAIAAAArAA4AAQAGAAIAAAAsAA4AAQAGAAIAAAAtAA4AAQAGAAIAAAAuAA4AAQAGAAIAAAAvAA4AAQAGAAIAAAAwAA4AAQAGAAIAAAAxAA4AAQAHAAIAAAAxAA0AAQAHAAEAAAAxAAwAAQAHAAEAAAAxAAsAAQAHAAEAAAAxAAoAAQAHAAEAAAAxAAkAAQAHAAEAAAAxAAgAAQAHAAEAAAAxAAcAAQAHAAEAAAAxAAYAAQAHAAEAAAAxAAUAAQAHAAEAAAAxAAQAAQAHAAEAAAAxAAMAAQAHAAEAAAAxAAIAAQAHAAEAAAAxAAEAAQAHAAEAAAAxAAAAAQAHAAAAAAAwAAAAAQAGAAAAAAAvAAAAAQAGAAAAAAAuAAAAAQAGAAAAAAAtAAAAAQAGAAAAAAAsAAAAAQAGAAAAAAArAAAAAQAGAAAAAAAqAAAAAQAGAAAAAAApAAAAAQAGAAAAAAAoAAAAAQAGAAAAAAAnAAAAAQAGAAAAAAAmAAAAAQAGAAAAAAAlAAAAAQAGAAAAAAAkAAAAAQAGAAAAAAAjAAAAAQAGAAAAAAAiAAAAAQAGAAAAAAAhAAAAAQAGAAAAAAAgAAAAAQAGAAAAAAAfAAAAAQAGAAAAAAAeAAAAAQAGAAAAAAAdAAAAAQAGAAAAAAAcAAAAAQAGAAAAAAAbAAAAAQAGAAAAAAAaAAAAAQAGAAAAAAAZAAUAAQAAAAAAAAAZAAYAAQAAAAAAAAAZAAcAAQAAAAAAAAAZAAgAAQAAAAAAAAAZAAkAAQAAAAAAAAAiAAgAAQAAAAAAAAAiAAcAAQAAAAAAAAAiAAYAAQAAAAAAAAAiAAUAAQAAAAAAAAAiAAQAAQAAAAAAAAAiAAMAAQAAAAAAAAAiAAIAAQAAAAAAAAAiAAEAAQAAAAAAAAAhAAEAAQAAAAAAAAAgAAEAAQAAAAAAAAAfAAEAAQAAAAAAAAAeAAEAAQAAAAAAAAAdAAEAAQAAAAAAAAAcAAEAAQAAAAAAAAAbAAEAAQAAAAAAAAAaAAEAAQAAAAAAAAAaAAIAAQAAAAAAAAAaAAMAAQAAAAAAAAAaAAQAAQAAAAAAAAAaAAUAAQAAAAAAAAAaAAYAAQAAAAAAAAAaAAcAAQAAAAAAAAAaAAgAAQAAAAAAAAAaAAkAAQAAAAAAAAAaAAoAAQAAAAAAAAAaAAsAAQAAAAAAAAAaAAwAAQAAAAAAAAAaAA0AAQAAAAAAAAAbAA0AAQAAAAAAAAAbAAwAAQAAAAAAAAAbAAsAAQAAAAAAAAAbAAoAAQAAAAAAAAAbAAkAAQAAAAAAAAAbAAgAAQAAAAAAAAAbAAcAAQAAAAAAAAAbAAYAAQAAAAAAAAAbAAUAAQAAAAAAAAAbAAQAAQAAAAAAAAAbAAMAAQAAAAAAAAAbAAIAAQAAAAAAAAAcAAIAAQAAAAAAAAAcAAMAAQAAAAAAAAAcAAQAAQAAAAAAAAAcAAUAAQAAAAAAAAAcAAYAAQAAAAAAAAAcAAcAAQAAAAAAAAAcAAgAAQAAAAAAAAAcAAkAAQAAAAAAAAAcAAoAAQAAAAAAAAAcAAsAAQAAAAAAAAAcAAwAAQAAAAAAAAAcAA0AAQAAAAAAAAAdAA0AAQAAAAAAAAAdAAwAAQAAAAAAAAAdAAsAAQAAAAAAAAAdAAoAAQAAAAAAAAAdAAkAAQAAAAAAAAAdAAgAAQAAAAAAAAAdAAcAAQAAAAAAAAAdAAYAAQAAAAAAAAAdAAUAAQAAAAAAAAAdAAQAAQAAAAAAAAAdAAMAAQAAAAAAAAAdAAIAAQAAAAAAAAAeAAIAAQAAAAAAAAAeAAMAAQAAAAAAAAAeAAQAAQAAAAAAAAAeAAUAAQAAAAAAAAAeAAYAAQAAAAAAAAAeAAcAAQAAAAAAAAAeAAgAAQAAAAAAAAAeAAkAAQAAAAAAAAAeAAoAAQAAAAAAAAAeAAsAAQAAAAAAAAAeAAwAAQAAAAAAAAAeAA0AAQAAAAAAAAAfAA0AAQAAAAAAAAAfAAwAAQAAAAAAAAAfAAsAAQAAAAAAAAAfAAoAAQAAAAAAAAAfAAkAAQAAAAAAAAAfAAgAAQAAAAAAAAAfAAcAAQAAAAAAAAAfAAYAAQAAAAAAAAAfAAUAAQAAAAAAAAAfAAQAAQAAAAAAAAAfAAMAAQAAAAAAAAAfAAIAAQAAAAAAAAAgAAIAAQAAAAAAAAAgAAMAAQAAAAAAAAAgAAQAAQAAAAAAAAAgAAUAAQAAAAAAAAAgAAYAAQAAAAAAAAAgAAcAAQAAAAAAAAAgAAgAAQAAAAAAAAAgAAkAAQAAAAAAAAAgAAoAAQAAAAAAAAAgAAsAAQAAAAAAAAAgAAwAAQAAAAAAAAAgAA0AAQAAAAAAAAAhAA0AAQAAAAAAAAAhAAwAAQAAAAAAAAAhAAsAAQAAAAAAAAAhAAoAAQAAAAAAAAAhAAkAAQAAAAAAAAAhAAgAAQAAAAAAAAAhAAcAAQAAAAAAAAAhAAYAAQAAAAAAAAAhAAUAAQAAAAAAAAAhAAQAAQAAAAAAAAAhAAMAAQAAAAAAAAAhAAIAAQAAAAAAAAAiAAkAAQAAAAAAAAAiAAoAAQAAAAAAAAAiAAsAAQAAAAAAAAAiAAwAAQAAAAAAAAAiAA0AAQAAAAAAAAAjAA0AAQAAAAAAAAAjAAwAAQAAAAAAAAAjAAsAAQAAAAAAAAAjAAoAAQAAAAAAAAAjAAkAAQAAAAAAAAAjAAgAAQAAAAAAAAAjAAcAAQAAAAAAAAAjAAYAAQAAAAAAAAAjAAUAAQAAAAAAAAAjAAQAAQAAAAAAAAAjAAMAAQAAAAAAAAAjAAIAAQAAAAAAAAAjAAEAAQAAAAAAAAAkAAEAAQAAAAAAAAAkAAIAAQAAAAAAAAAkAAMAAQAAAAAAAAAkAAQAAQAAAAAAAAAkAAUAAQAAAAAAAAAkAAYAAQAAAAAAAAAkAAcAAQAAAAAAAAAkAAgAAQAAAAAAAAAkAAkAAQAAAAAAAAAkAAoAAQAAAAAAAAAkAAsAAQAAAAAAAAAkAAwAAQAAAAAAAAAkAA0AAQAAAAAAAAAlAA0AAQAAAAAAAAAlAAwAAQAAAAAAAAAlAAsAAQAAAAAAAAAlAAoAAQAAAAAAAAAlAAkAAQAAAAAAAAAlAAgAAQAAAAAAAAAlAAcAAQAAAAAAAAAlAAYAAQAAAAAAAAAlAAUAAQAAAAAAAAAlAAQAAQAAAAAAAAAlAAMAAQAAAAAAAAAlAAIAAQAAAAAAAAAlAAEAAQAAAAAAAAAmAAEAAQAAAAAAAAAmAAIAAQAAAAAAAAAmAAMAAQAAAAAAAAAmAAQAAQAAAAAAAAAmAAUAAQAAAAAAAAAmAAYAAQAAAAAAAAAmAAcAAQAAAAAAAAAmAAgAAQAAAAAAAAAmAAkAAQAAAAAAAAAmAAoAAQAAAAAAAAAmAAsAAQAAAAAAAAAmAAwAAQAAAAAAAAAmAA0AAQAAAAAAAAAnAA0AAQAAAAAAAAAnAAwAAQAAAAAAAAAnAAsAAQAAAAAAAAAnAAoAAQAAAAAAAAAnAAkAAQAAAAAAAAAnAAgAAQAAAAAAAAAnAAcAAQAAAAAAAAAnAAYAAQAAAAAAAAAnAAUAAQAAAAAAAAAnAAQAAQAAAAAAAAAnAAMAAQAAAAAAAAAnAAIAAQAAAAAAAAAnAAEAAQAAAAAAAAAoAAEAAQAAAAAAAAAoAAIAAQAAAAAAAAAoAAMAAQAAAAAAAAAoAAQAAQAAAAAAAAAoAAUAAQAAAAAAAAAoAAYAAQAAAAAAAAAoAAcAAQAAAAAAAAAoAAgAAQAAAAAAAAAoAAkAAQAAAAAAAAAoAAoAAQAAAAAAAAAoAAsAAQAAAAAAAAAoAAwAAQAAAAAAAAAoAA0AAQAAAAAAAAApAA0AAQAAAAAAAAApAAwAAQAAAAAAAAApAAsAAQAAAAAAAAApAAoAAQAAAAAAAAApAAkAAQAAAAAAAAApAAgAAQAAAAAAAAApAAcAAQAAAAAAAAApAAYAAQAAAAAAAAApAAUAAQAAAAAAAAApAAQAAQAAAAAAAAApAAMAAQAAAAAAAAApAAIAAQAAAAAAAAApAAEAAQAAAAAAAAAqAAEAAQAAAAAAAAAqAAIAAQAAAAAAAAAqAAMAAQAAAAAAAAAqAAQAAQAAAAAAAAAqAAUAAQAAAAAAAAAqAAYAAQAAAAAAAAAqAAcAAQAAAAAAAAAqAAgAAQAAAAAAAAAqAAkAAQAAAAAAAAAqAAoAAQAAAAAAAAAqAAsAAQAAAAAAAAAqAAwAAQAAAAAAAAAqAA0AAQAAAAAAAAArAA0AAQAAAAAAAAArAAwAAQAAAAAAAAArAAsAAQAAAAAAAAArAAoAAQAAAAAAAAArAAkAAQAAAAAAAAArAAgAAQAAAAAAAAArAAcAAQAAAAAAAAArAAYAAQAAAAAAAAArAAUAAQAAAAAAAAArAAQAAQAAAAAAAAArAAMAAQAAAAAAAAArAAIAAQAAAAAAAAArAAEAAQAAAAAAAAAsAAEAAQAAAAAAAAAsAAIAAQAAAAAAAAAsAAMAAQAAAAAAAAAsAAQAAQAAAAAAAAAsAAUAAQAAAAAAAAAsAAYAAQAAAAAAAAAsAAcAAQAAAAAAAAAsAAgAAQAAAAAAAAAsAAkAAQAAAAAAAAAsAAoAAQAAAAAAAAAsAAsAAQAAAAAAAAAsAAwAAQAAAAAAAAAsAA0AAQAAAAAAAAAtAA0AAQAAAAAAAAAtAAwAAQAAAAAAAAAtAAsAAQAAAAAAAAAtAAoAAQAAAAAAAAAtAAkAAQAAAAAAAAAtAAgAAQAAAAAAAAAtAAcAAQAAAAAAAAAtAAYAAQAAAAAAAAAtAAUAAQAAAAAAAAAtAAQAAQAAAAAAAAAtAAMAAQAAAAAAAAAtAAIAAQAAAAAAAAAtAAEAAQAAAAAAAAAuAAEAAQAAAAAAAAAuAAIAAQAAAAAAAAAuAAMAAQAAAAAAAAAuAAQAAQAAAAAAAAAuAAUAAQAAAAAAAAAuAAYAAQAAAAAAAAAuAAcAAQAAAAAAAAAuAAgAAQAAAAAAAAAuAAkAAQAAAAAAAAAuAAoAAQAAAAAAAAAuAAsAAQAAAAAAAAAuAAwAAQAAAAAAAAAuAA0AAQAAAAAAAAAvAA0AAQAAAAAAAAAvAAwAAQAAAAAAAAAvAAsAAQAAAAAAAAAvAAoAAQAAAAAAAAAvAAkAAQAAAAAAAAAvAAgAAQAAAAAAAAAvAAcAAQAAAAAAAAAvAAYAAQAAAAAAAAAvAAUAAQAAAAAAAAAvAAQAAQAAAAAAAAAvAAMAAQAAAAAAAAAvAAIAAQAAAAAAAAAvAAEAAQAAAAAAAAAwAAEAAQAAAAAAAAAwAAIAAQAAAAAAAAAwAAMAAQAAAAAAAAAwAAQAAQAAAAAAAAAwAAUAAQAAAAAAAAAwAAYAAQAAAAAAAAAwAAcAAQAAAAAAAAAwAAgAAQAAAAAAAAAwAAkAAQAAAAAAAAAwAAoAAQAAAAAAAAAwAAsAAQAAAAAAAAAwAAwAAQAAAAAAAAAwAA0AAQAAAAAAAAAHAAYAAQAAAAAAAAAHAAUAAQAAAAAAAAAHAAQAAQAAAAAAAAAHAAMAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAADAAEAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAABAAgAAQAAAAAAAAABAAkAAQAAAAAAAAABAAoAAQAAAAAAAAABAAsAAQABAAAAAAABAAwAAQAAAAAAAAABAA0AAQAAAAAAAAACAA0AAQAAAAAAAAACAAwAAQAAAAAAAAACAAsAAQAAAAAAAAACAAoAAQAAAAAAAAACAAkAAQAAAAAAAAACAAgAAQAAAAAAAAACAAcAAQAAAAAAAAACAAYAAQAAAAAAAAACAAUAAQAAAAAAAAACAAQAAQAAAAAAAAACAAMAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAADAAQAAQAAAAAAAAADAAUAAQAAAAAAAAADAAYAAQAAAAAAAAADAAcAAQAAAAAAAAADAAgAAQAAAAAAAAADAAkAAQAAAAAAAAADAAoAAQAAAAAAAAADAAsAAQAAAAAAAAADAAwAAQAAAAIAAAADAA0AAQAAAAAAAAAEAA0AAQAAAAAAAAAEAAwAAQAAAAAAAAAEAAsAAQAAAAAAAAAEAAoAAQAAAAAAAAAEAAkAAQAAAAAAAAAEAAgAAQAAAAAAAAAEAAcAAQAAAAAAAAAEAAYAAQAAAAAAAAAEAAUAAQAAAAAAAAAEAAQAAQAAAAAAAAAEAAMAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQAAAAAAAAAFAAYAAQAAAAAAAAAFAAcAAQAAAAAAAAAFAAgAAQAAAAAAAAAFAAkAAQAAAAAAAAAFAAoAAQAAAAAAAAAFAAsAAQACAAIAAAAFAAwAAQAAAAAAAAAFAA0AAQACAAAAAAAGAA0AAQAAAAEAAAAGAAwAAQAAAAAAAAAGAAsAAQAAAAAAAAAGAAoAAQAAAAAAAAAGAAkAAQAAAAAAAAAGAAgAAQAAAAAAAAAGAAcAAQAAAAAAAAAGAAYAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAIAAQAAAAAAAAAHAAcAAQAAAAAAAAAHAAgAAQAAAAAAAAAHAAkAAQAAAAAAAAAHAAoAAQAAAAAAAAAHAAsAAQAAAAAAAAAHAAwAAQAAAAAAAAAHAA0AAQAAAAAAAAAIAA0AAQAAAAAAAAAIAAwAAQAAAAAAAAAIAAsAAQAAAAAAAAAIAAoAAQAAAAAAAAAIAAkAAQAAAAAAAAAIAAgAAQAAAAAAAAAIAAcAAQAAAAAAAAAIAAYAAQAAAAAAAAAIAAUAAQAAAAAAAAAIAAQAAQAAAAAAAAAIAAMAAQAAAAAAAAAIAAIAAQAAAAAAAAAIAAEAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAJAAgAAQAAAAAAAAAJAAkAAQAAAAAAAAAJAAoAAQAAAAAAAAAJAAsAAQAAAAAAAAAJAAwAAQAAAAAAAAAJAA0AAQAAAAAAAAAKAA0AAQAAAAAAAAAKAAwAAQAAAAAAAAAKAAsAAQAAAAAAAAAKAAoAAQAAAAAAAAAKAAkAAQAAAAAAAAAKAAgAAQAAAAAAAAAKAAcAAQAAAAAAAAAKAAYAAQAAAAAAAAAKAAUAAQAAAAAAAAAKAAQAAQAAAAAAAAAKAAMAAQAAAAAAAAAKAAIAAQAAAAAAAAAKAAEAAQAAAAAAAAALAAEAAQAAAAAAAAALAAIAAQAAAAAAAAALAAMAAQAAAAAAAAALAAQAAQAAAAAAAAALAAUAAQAAAAAAAAALAAYAAQAAAAAAAAALAAcAAQAAAAAAAAALAAgAAQAAAAAAAAALAAkAAQAAAAAAAAALAAoAAQAAAAAAAAALAAsAAQAAAAAAAAALAAwAAQAAAAAAAAALAA0AAQAAAAAAAAAMAA0AAQAAAAAAAAAMAAwAAQAAAAAAAAAMAAsAAQAAAAAAAAAMAAoAAQAAAAAAAAAMAAkAAQAAAAAAAAAMAAgAAQAAAAAAAAAMAAcAAQAAAAAAAAAMAAYAAQAAAAAAAAAMAAUAAQAAAAAAAAAMAAQAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAEAAQAAAAAAAAANAAEAAQAAAAAAAAANAAIAAQAAAAAAAAANAAMAAQAAAAAAAAANAAQAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAQAAAAAAAAANAAcAAQAAAAAAAAANAAgAAQAAAAAAAAANAAkAAQAAAAAAAAANAAoAAQAAAAAAAAANAAsAAQAAAAAAAAANAAwAAQAAAAAAAAANAA0AAQAAAAAAAAAOAA0AAQAAAAAAAAAOAAwAAQAAAAAAAAAOAAsAAQAAAAAAAAAOAAoAAQAAAAAAAAAOAAkAAQAAAAAAAAAOAAgAAQAAAAAAAAAOAAcAAQAAAAAAAAAOAAYAAQAAAAAAAAAOAAUAAQAAAAAAAAAOAAQAAQAAAAAAAAAOAAMAAQAAAAAAAAAOAAIAAQAAAAAAAAAOAAEAAQAAAAAAAAAPAAEAAQAAAAAAAAAPAAIAAQAAAAAAAAAPAAMAAQAAAAAAAAAPAAQAAQAAAAAAAAAPAAUAAQAAAAAAAAAPAAYAAQAAAAAAAAAPAAcAAQAAAAAAAAAPAAgAAQAAAAAAAAAPAAkAAQAAAAAAAAAPAAoAAQAAAAAAAAAPAAsAAQAAAAAAAAAPAAwAAQAAAAAAAAAPAA0AAQAAAAAAAAAQAA0AAQAAAAAAAAAQAAwAAQAAAAAAAAAQAAsAAQAAAAAAAAAQAAoAAQAAAAAAAAAQAAkAAQAAAAAAAAAQAAgAAQAAAAAAAAAQAAcAAQAAAAAAAAAQAAYAAQAAAAAAAAAQAAUAAQAAAAAAAAAQAAQAAQAAAAAAAAAQAAMAAQAAAAAAAAAQAAIAAQAAAAAAAAAQAAEAAQAAAAAAAAARAAEAAQAAAAAAAAARAAIAAQAAAAAAAAARAAMAAQAAAAAAAAARAAQAAQAAAAAAAAARAAUAAQAAAAAAAAARAAYAAQAAAAAAAAARAAcAAQAAAAAAAAARAAgAAQAAAAAAAAARAAkAAQAAAAAAAAARAAoAAQAAAAAAAAARAAsAAQAAAAAAAAARAAwAAQAAAAAAAAARAA0AAQAAAAAAAAASAA0AAQACAAEAAAASAAoAAQAAAAAAAAASAAkAAQAAAAAAAAASAAgAAQAAAAAAAAASAAcAAQAAAAAAAAASAAYAAQAAAAAAAAASAAUAAQAAAAAAAAASAAQAAQAAAAAAAAASAAMAAQACAAIAAAASAAIAAQAAAAAAAAASAAEAAQABAAIAAAATAAEAAQAAAAEAAAATAAIAAQAAAAAAAAATAAMAAQAAAAAAAAATAAQAAQAAAAAAAAATAAUAAQAAAAAAAAATAAYAAQAAAAAAAAATAAcAAQAAAAAAAAATAAgAAQAAAAAAAAATAAkAAQAAAAAAAAATAAoAAQAAAAAAAAATAA0AAQAAAAAAAAAUAA0AAQACAAIAAAAUAAoAAQAAAAAAAAAUAAkAAQAAAAAAAAAUAAgAAQAAAAAAAAAUAAcAAQAAAAAAAAAUAAYAAQAAAAAAAAAUAAUAAQAAAAAAAAAUAAQAAQAAAAAAAAAUAAMAAQAAAAAAAAAUAAIAAQAAAAAAAAAUAAEAAQAAAAAAAAAVAAEAAQAAAAEAAAAVAAIAAQACAAEAAAAVAAMAAQAAAAAAAAAVAAQAAQACAAAAAAAVAAUAAQABAAIAAAAVAAYAAQAAAAAAAAAVAAcAAQAAAAAAAAAVAAgAAQAAAAAAAAAVAAkAAQAAAAAAAAAVAAoAAQAAAAAAAAAVAA0AAQAAAAAAAAAWAA0AAQAAAAIAAAAWAAoAAQAAAAAAAAAWAAkAAQAAAAAAAAAWAAgAAQAAAAAAAAAWAAcAAQAAAAAAAAAWAAYAAQAAAAAAAAAWAAUAAQAAAAAAAAAWAAQAAQAAAAAAAAAWAAMAAQAAAAAAAAAWAAIAAQAAAAAAAAAWAAEAAQABAAIAAAAXAAEAAQAAAAAAAAAXAAIAAQAAAAEAAAAXAAMAAQAAAAAAAAAXAAQAAQAAAAAAAAAXAAUAAQAAAAAAAAAXAAYAAQAAAAAAAAAXAAcAAQAAAAAAAAAXAAgAAQAAAAAAAAAXAAkAAQAAAAAAAAAXAAoAAQAAAAAAAAAXAA0AAQAAAAIAAAAYAAkAAQAAAAAAAAAYAAgAAQAAAAAAAAAYAAcAAQAAAAAAAAAYAAYAAQAAAAAAAAAYAAUAAQAAAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAAAAAASAAwAAQAAAAAAAAATAAwAAQAAAAAAAAAUAAwAAQACAAEAAAAVAAwAAQAAAAAAAAAWAAwAAQAAAAIAAAAXAAwAAQACAAEAAAAXAAsAAQAAAAAAAAAWAAsAAQAAAAAAAAAVAAsAAQAAAAAAAAAUAAsAAQAAAAAAAAATAAsAAQAAAAAAAAASAAsAAQAAAAAAAAA=")
+tile_set = ExtResource("11_b71v1")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1027709715]
+position = Vector2(200, 120)
 
 [node name="ButtonHandler" type="Node" parent="." unique_id=52559361]
 script = ExtResource("7_oma0l")
 mainScenePath = "uid://bouck7u1vxq2m"
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1617737714]
-z_index = -4096
-texture_filter = 1
-material = ExtResource("5_l7tes")
-position = Vector2(200, 120)
-texture = ExtResource("6_2xyme")
+[node name="ent_button_start" parent="ButtonHandler" unique_id=1697879174 instance=ExtResource("2_w7tdv")]
+z_index = -1
+position = Vector2(96, 144)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1816431166]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1257554228]
-position = Vector2(200, 240)
-shape = SubResource("WorldBoundaryShape2D_r51m6")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=671148136]
-position = Vector2(200, 0)
-shape = SubResource("WorldBoundaryShape2D_tl32x")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=165836053]
-position = Vector2(0, 120)
-shape = SubResource("WorldBoundaryShape2D_w7tdv")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1891642042]
-position = Vector2(400, 120)
-shape = SubResource("WorldBoundaryShape2D_h70pd")
-
-[node name="ent_button_start" parent="." unique_id=1697879174 instance=ExtResource("2_w7tdv")]
-position = Vector2(96, 152)
-
-[node name="ent_button_quit" parent="." unique_id=838103767 instance=ExtResource("3_l7tes")]
-position = Vector2(312, 152)
+[node name="ent_button_quit" parent="ButtonHandler" unique_id=838103767 instance=ExtResource("3_l7tes")]
+z_index = -1
+position = Vector2(200, 200)
 loadTime = 2.0
 
-[node name="ent_button_option" parent="." unique_id=1917283563 instance=ExtResource("4_oma0l")]
-position = Vector2(484, 136)
+[node name="Logo" type="Sprite2D" parent="." unique_id=1617737714]
+z_index = -1
+texture_filter = 1
+material = ExtResource("5_l7tes")
+position = Vector2(200, 60)
+texture = ExtResource("6_2xyme")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=664773616]
 material = ExtResource("5_l7tes")
-position = Vector2(64, 56)
+position = Vector2(48, 56)
 texture = ExtResource("8_1l3gk")
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=587877939]
 material = ExtResource("5_l7tes")
-position = Vector2(81, 82)
+position = Vector2(65, 82)
 texture = ExtResource("8_nhygy")
 
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1226195706]
+y_sort_enabled = true
+material = ExtResource("5_l7tes")
+position = Vector2(324, 152)
+texture = ExtResource("8_b71v1")
+offset = Vector2(0, -6)
+
 [node name="ent_clock" parent="." unique_id=1494230456 instance=ExtResource("9_2xyme")]
-position = Vector2(320, 88)
+position = Vector2(328, 86)
 
 [node name="ent_player" parent="." unique_id=2023939700 instance=ExtResource("2_h70pd")]
-position = Vector2(200, 109)
+position = Vector2(200, 128)
 
-[connection signal="ButtonActivated" from="ent_button_start" to="ButtonHandler" method="HandleButtonActivated"]
-[connection signal="ButtonActivated" from="ent_button_quit" to="ButtonHandler" method="HandleButtonActivated"]
-[connection signal="ButtonActivated" from="ent_button_option" to="ButtonHandler" method="HandleButtonActivated"]
+[node name="Cells" type="Node" parent="." unique_id=1416731554 node_paths=PackedStringArray("camera", "areas")]
+script = ExtResource("12_v8pvl")
+camera = NodePath("../Camera2D")
+areas = [NodePath("Area2D"), NodePath("Area2D2")]
+
+[node name="Area2D" type="Area2D" parent="Cells" unique_id=1493716941]
+visible = false
+position = Vector2(200, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cells/Area2D" unique_id=217182392]
+shape = SubResource("RectangleShape2D_1ejkc")
+
+[node name="Area2D2" type="Area2D" parent="Cells" unique_id=1034874807]
+visible = false
+position = Vector2(600, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cells/Area2D2" unique_id=32135125]
+shape = SubResource("RectangleShape2D_1ejkc")
+
+[node name="OptionsHandler" type="Node" parent="." unique_id=2075388185 node_paths=PackedStringArray("masterVolumeSlider", "sfxVolumeSlider", "backgroundVolumeSlider", "fullScreenCheckbox", "colorAPickButton", "colorBPickButton")]
+script = ExtResource("13_dlgkt")
+masterVolumeSlider = NodePath("Slider_MasterVol")
+sfxVolumeSlider = NodePath("Slider_SFXVol")
+backgroundVolumeSlider = NodePath("Slider_BackVol")
+fullScreenCheckbox = NodePath("Checkbox_fullscreen")
+colorAPickButton = NodePath("ent_ColorButtonA")
+colorBPickButton = NodePath("ent_ColorButtonB")
+defaultSettings = SubResource("Resource_r51m6")
+
+[node name="Sprite2D" type="Sprite2D" parent="OptionsHandler" unique_id=138011960]
+visible = false
+self_modulate = Color(1, 1, 1, 0.163)
+position = Vector2(600, 120)
+texture = ExtResource("18_41sca")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="OptionsHandler" unique_id=89186113]
+visible = false
+self_modulate = Color(1, 1, 1, 0.163)
+position = Vector2(600, 120)
+texture = ExtResource("16_1stgn")
+metadata/_edit_lock_ = true
+
+[node name="Slider_MasterVol" parent="OptionsHandler" unique_id=491963608 instance=ExtResource("13_fef32")]
+position = Vector2(688, 24)
+
+[node name="EntPercentage" parent="OptionsHandler/Slider_MasterVol" unique_id=1260374929 instance=ExtResource("14_fef32")]
+position = Vector2(-97, 18)
+
+[node name="Sprite2D2" type="Sprite2D" parent="OptionsHandler/Slider_MasterVol" unique_id=1157753894]
+z_index = -1
+material = ExtResource("5_l7tes")
+position = Vector2(-199.5, 10.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(1, 1, 75, 11)
+
+[node name="Sprite2D3" type="Sprite2D" parent="OptionsHandler/Slider_MasterVol" unique_id=1971126138]
+z_index = -1
+material = ExtResource("5_l7tes")
+position = Vector2(-137, 10.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(78, 1, 36, 11)
+
+[node name="Slider_SFXVol" parent="OptionsHandler" unique_id=1404010386 instance=ExtResource("13_fef32")]
+position = Vector2(688, 50)
+
+[node name="EntPercentage" parent="OptionsHandler/Slider_SFXVol" unique_id=2143699621 instance=ExtResource("14_fef32")]
+position = Vector2(-97, 18)
+
+[node name="Sprite2D2" type="Sprite2D" parent="OptionsHandler/Slider_SFXVol" unique_id=170012467]
+z_index = -1
+material = ExtResource("5_l7tes")
+position = Vector2(-178.5, 10.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(1, 14, 33, 11)
+
+[node name="Sprite2D3" type="Sprite2D" parent="OptionsHandler/Slider_SFXVol" unique_id=1200864667]
+z_index = -1
+material = ExtResource("5_l7tes")
+position = Vector2(-137, 10.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(78, 1, 36, 11)
+
+[node name="Slider_BackVol" parent="OptionsHandler" unique_id=1753729218 instance=ExtResource("13_fef32")]
+position = Vector2(688, 76)
+
+[node name="EntPercentage" parent="OptionsHandler/Slider_BackVol" unique_id=302564806 instance=ExtResource("14_fef32")]
+position = Vector2(-97, 18)
+
+[node name="Sprite2D2" type="Sprite2D" parent="OptionsHandler/Slider_BackVol" unique_id=848143381]
+z_index = -1
+material = ExtResource("5_l7tes")
+position = Vector2(-206, 10.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(1, 53, 88, 11)
+
+[node name="Sprite2D3" type="Sprite2D" parent="OptionsHandler/Slider_BackVol" unique_id=1896924591]
+z_index = -1
+material = ExtResource("5_l7tes")
+position = Vector2(-137, 10.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(78, 1, 36, 11)
+
+[node name="Checkbox_fullscreen" parent="OptionsHandler" unique_id=1037042008 instance=ExtResource("19_bdod1")]
+position = Vector2(598, 115)
+
+[node name="ent_switch" parent="OptionsHandler/Checkbox_fullscreen" unique_id=1722853475 instance=ExtResource("20_1stgn")]
+position = Vector2(17, -1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="OptionsHandler/Checkbox_fullscreen" unique_id=856119992]
+z_index = -1
+material = ExtResource("5_l7tes")
+position = Vector2(-126, 0.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(2, 40, 44, 11)
+
+[node name="Sprite2D3" type="Sprite2D" parent="OptionsHandler/Checkbox_fullscreen" unique_id=1909508435]
+z_index = -1
+material = ExtResource("5_l7tes")
+position = Vector2(-63.5, 0.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(36, 14, 69, 11)
+
+[node name="ent_ColorButtonA" parent="OptionsHandler" unique_id=908148799 node_paths=PackedStringArray("otherPicker") instance=ExtResource("22_c5o78")]
+position = Vector2(679.5, 144)
+otherPicker = NodePath("../ent_ColorButtonB")
+
+[node name="Sprite2D2" type="Sprite2D" parent="OptionsHandler/ent_ColorButtonA" unique_id=369252850]
+material = ExtResource("5_l7tes")
+position = Vector2(-210.5, 0.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(1, 27, 58, 11)
+
+[node name="Sprite2D3" type="Sprite2D" parent="OptionsHandler/ent_ColorButtonA" unique_id=759146991]
+material = ExtResource("5_l7tes")
+position = Vector2(-144, 0.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(48, 40, 63, 11)
+
+[node name="ent_ColorButtonB" parent="OptionsHandler" unique_id=931781481 node_paths=PackedStringArray("otherPicker") instance=ExtResource("22_c5o78")]
+position = Vector2(679.5, 170)
+otherPicker = NodePath("../ent_ColorButtonA")
+
+[node name="Sprite2D2" type="Sprite2D" parent="OptionsHandler/ent_ColorButtonB" unique_id=1082778577]
+material = ExtResource("5_l7tes")
+position = Vector2(-210.5, 0.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(61, 27, 54, 11)
+
+[node name="Sprite2D3" type="Sprite2D" parent="OptionsHandler/ent_ColorButtonB" unique_id=84510722]
+material = ExtResource("5_l7tes")
+position = Vector2(-144, 0.5)
+texture = ExtResource("17_lvk2f")
+region_enabled = true
+region_rect = Rect2(48, 40, 63, 11)
+
+[node name="ent_button_accept" parent="OptionsHandler" unique_id=1561824237 instance=ExtResource("23_pijyv")]
+position = Vector2(631, 204.5)
+
+[node name="ent_button_reset" parent="OptionsHandler" unique_id=86946547 instance=ExtResource("24_r37wx")]
+position = Vector2(737, 204.5)
+loadTime = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=767899166]
+stream = ExtResource("25_sti0v")
+autoplay = true
+bus = &"Background"
+
+[connection signal="ButtonActivated" from="ButtonHandler/ent_button_start" to="ButtonHandler" method="HandleButtonActivated"]
+[connection signal="ButtonActivated" from="ButtonHandler/ent_button_quit" to="ButtonHandler" method="HandleButtonActivated"]
+[connection signal="BackgroundVolumeChanged" from="OptionsHandler" to="OptionsHandler/Slider_BackVol" method="SetValue"]
+[connection signal="ColorAIndexChanged" from="OptionsHandler" to="OptionsHandler/ent_ColorButtonA" method="SetIndex"]
+[connection signal="ColorBIndexChanged" from="OptionsHandler" to="OptionsHandler/ent_ColorButtonB" method="SetIndex"]
+[connection signal="MasterVolumeChanged" from="OptionsHandler" to="OptionsHandler/Slider_MasterVol" method="SetValue"]
+[connection signal="SfxVolumeChanged" from="OptionsHandler" to="OptionsHandler/Slider_SFXVol" method="SetValue"]
+[connection signal="OnValueChanged" from="OptionsHandler/Slider_MasterVol" to="OptionsHandler/Slider_MasterVol/EntPercentage" method="SetTextFromFloat"]
+[connection signal="OnValueChanged" from="OptionsHandler/Slider_SFXVol" to="OptionsHandler/Slider_SFXVol/EntPercentage" method="SetTextFromFloat"]
+[connection signal="OnValueChanged" from="OptionsHandler/Slider_BackVol" to="OptionsHandler/Slider_BackVol/EntPercentage" method="SetTextFromFloat"]
+[connection signal="SwitchToggled" from="OptionsHandler/Checkbox_fullscreen/ent_switch" to="OptionsHandler/Checkbox_fullscreen" method="SetChecked"]
+[connection signal="ButtonActivated" from="OptionsHandler/ent_button_accept" to="OptionsHandler" method="HandleButtons"]
+[connection signal="ButtonActivated" from="OptionsHandler/ent_button_reset" to="OptionsHandler" method="HandleButtons"]

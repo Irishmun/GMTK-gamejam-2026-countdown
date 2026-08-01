@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://hh84bgyxrct7"]
+
+[ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_cvfvd"]
+[ext_resource type="Script" uid="uid://dnvvpfgadaj2a" path="res://source/entities/options/CheckboxValue.cs" id="1_d3jgr"]
+[ext_resource type="Texture2D" uid="uid://pvqak7yh8t8p" path="res://Assets/Sprites/UI_Options.png" id="2_d3jgr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r51m6"]
+size = Vector2(14, 14)
+
+[node name="ent_checkbox" type="StaticBody2D" unique_id=1037042008 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_d3jgr")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=241996784]
+z_index = -1
+material = ExtResource("1_cvfvd")
+texture = ExtResource("2_d3jgr")
+hframes = 3
+region_enabled = true
+region_rect = Rect2(112, 16, 48, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2028143929]
+shape = SubResource("RectangleShape2D_r51m6")
+disabled = true

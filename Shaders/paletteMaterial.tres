@@ -6,5 +6,5 @@
 shader = ExtResource("1_hgr08")
 shader_parameter/base_A = Color(0.94, 0.96, 0.94, 1)
 shader_parameter/base_B = Color(0.13, 0.13, 0.13, 1)
-shader_parameter/replace_A = Color(0.94, 0.96, 0.94, 1)
-shader_parameter/replace_B = Color(0.13, 0.13, 0.13, 1)
+shader_parameter/replace_A = Color(0.9411765, 0.9607843, 0.9411765, 1)
+shader_parameter/replace_B = Color(0.12941177, 0.12941177, 0.12941177, 1)

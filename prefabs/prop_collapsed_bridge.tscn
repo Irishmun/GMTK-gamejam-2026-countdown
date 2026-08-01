@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_c3qp5"]
 [ext_resource type="Script" uid="uid://3raf7yrar6wl" path="res://source/entities/timebound/CollapsingBridge.cs" id="1_fac88"]
 [ext_resource type="Texture2D" uid="uid://5ihk1yfjn5to" path="res://Assets/Sprites/collapsed bridge.png" id="2_fac88"]
+[ext_resource type="AudioStream" uid="uid://dgfehrsvl5fj0" path="res://Assets/sounds/button_press.wav" id="4_uipck"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fac88"]
 size = Vector2(4, 64)
@@ -83,6 +84,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(0, 32), Vector2(0, 36), Vector2(0, 40), Vector2(0, 42)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_fac88"]
 length = 0.001
@@ -158,6 +171,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(0, 32), Vector2(0, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uipck"]
 _data = {
@@ -217,3 +242,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=495587307]
 shape = SubResource("RectangleShape2D_k8m8b")
 disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=915067399]
+position = Vector2(0, 32)
+stream = ExtResource("4_uipck")
+pitch_scale = 0.2
+bus = &"SFX"

@@ -34,7 +34,7 @@ public partial class DependantPowerline : BasePowerline
         {
             str.Append($"{dependencies[i].Name} powered: {dependencies[i].Powered}| ");
         }
-        GD.Print(this.Name + ": Check all powered: " + dependencies.All(x => x.Powered == true) + $"({str.ToString()})");
+        //GD.Print(this.Name + ": Check all powered: " + dependencies.All(x => x.Powered == true) + $"({str.ToString()})");
 
         Powered = dependencies.All(x => x.Powered == true);
     }

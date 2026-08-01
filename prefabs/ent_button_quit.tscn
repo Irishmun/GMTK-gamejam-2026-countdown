@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://drdyrxvsowpgd" path="res://Shaders/paletteMaterial.tres" id="1_dhk32"]
 [ext_resource type="Script" uid="uid://i8nfes2wtipf" path="res://source/entities/button/ButtonArea.cs" id="1_srx2c"]
 [ext_resource type="Texture2D" uid="uid://cbrihq1fxc06b" path="res://Assets/Sprites/Button_Quit.png" id="3_srx2c"]
+[ext_resource type="AudioStream" uid="uid://dgfehrsvl5fj0" path="res://Assets/sounds/button_press.wav" id="4_dhk32"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r51m6"]
 size = Vector2(118, 26)
@@ -36,26 +37,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D2:region_rect")
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(128, 0, 128, 96)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D2:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_otcv1"]
@@ -85,6 +74,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_cr6b1"]
@@ -131,7 +132,6 @@ loadedSprite = NodePath("Sprite2D2")
 loadTime = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1510356804]
-z_index = -1
 texture_filter = 1
 material = ExtResource("1_dhk32")
 texture = ExtResource("3_srx2c")
@@ -146,10 +146,13 @@ shape = SubResource("RectangleShape2D_r51m6")
 libraries/ = SubResource("AnimationLibrary_u7sya")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=479445110]
-z_index = -1
 texture_filter = 1
 material = ExtResource("1_dhk32")
 texture = ExtResource("3_srx2c")
 vframes = 3
 region_enabled = true
 region_rect = Rect2(128, 0, 128, 96)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1172415317]
+stream = ExtResource("4_dhk32")
+bus = &"SFX"
