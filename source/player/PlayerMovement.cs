@@ -90,18 +90,13 @@ public partial class PlayerMovement : CharacterBody2D
         {
             Vector2 vel = _wasPushing ? (velocity * delta) * 1.1f : velocity * delta;
             KinematicCollision2D collisionBody = MoveAndCollide(vel, true, recoveryAsCollision: true);
-            //GD.Print($"collider: {collisionBody?.GetCollider()} is pushable: {collisionBody?.GetCollider() is Pusheable}");
-            if (collisionBody != null)
+            GD.Print($"collider: {collisionBody?.GetCollider()} is pushable: {collisionBody?.GetCollider() is Pusheable}");
+            if (collisionBody != null && collisionBody.GetCollider() is Pusheable)
             {
+                GD.Print(GlobalPosition.DirectionTo(collisionBody.GetPosition()));
                 animationPlayer.Play(ANIM_PUSHING);
-                if (collisionBody.GetCollider() is Pusheable)
-                {
-                    GD.Print(GlobalPosition.DirectionTo(collisionBody.GetPosition()));
-
-                    ((Pusheable)collisionBody.GetCollider()).TryPush(direction.X * pushSpeed);
-                    _wasPushing = true;
-                }
-
+                ((Pusheable)collisionBody.GetCollider()).TryPush(direction.X * pushSpeed);
+                _wasPushing = true;
                 return;
             }
         }

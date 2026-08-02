@@ -176,6 +176,7 @@ animationPlayer = NodePath("AnimationPlayer")
 libraries/ = SubResource("AnimationLibrary_eso3h")
 
 [node name="Sprite2D3" type="Sprite2D" parent="AnimatableBody2D/Camera2D/Node2D" unique_id=728581436]
+material = ExtResource("1_rshg0")
 position = Vector2(0, -200)
 texture = ExtResource("10_0bv3w")
 region_enabled = true
@@ -183,6 +184,7 @@ region_rect = Rect2(0, 0, 400, 72)
 
 [node name="Sprite2D4" type="Sprite2D" parent="AnimatableBody2D/Camera2D/Node2D" unique_id=914715919]
 visible = false
+material = ExtResource("1_rshg0")
 position = Vector2(0, 56.03)
 texture = ExtResource("10_0bv3w")
 region_enabled = true
