@@ -21,7 +21,7 @@ public partial class SettingsHandler : Node
     [Export] private DistanceValue masterVolumeSlider;
     [Export] private DistanceValue sfxVolumeSlider;
     [Export] private DistanceValue backgroundVolumeSlider;
-    [Export] private CheckboxValue fullScreenCheckbox;
+    [Export] private ToggleSwitch fullScreenCheckbox;
     [Export] private ColorPickButtons colorAPickButton;
     [Export] private ColorPickButtons colorBPickButton;
 
@@ -97,7 +97,7 @@ public partial class SettingsHandler : Node
                 str.AppendLine($"volume_master: {masterVolumeSlider.GetValueRaw()}");
                 str.AppendLine($"volume_sfx: {sfxVolumeSlider.GetValueRaw()}");
                 str.AppendLine($"volume_ambient: {backgroundVolumeSlider.GetValueRaw()}");
-                str.AppendLine($"start_maximized: {fullScreenCheckbox.GetChecked()}");
+                str.AppendLine($"start_maximized: {fullScreenCheckbox.State}");
                 str.AppendLine($"color_a: {colorAPickButton.SelectedIndex}");
                 str.AppendLine($"color_b: {colorBPickButton.SelectedIndex}");
                 file.StoreString(str.ToString());
@@ -160,6 +160,13 @@ public partial class SettingsHandler : Node
             }
         }
 
+        GD.Print($"volume_master: {masterVolume}");
+        GD.Print($"volume_sfx: {sfxVolume}");
+        GD.Print($"volume_ambient: {ambientVolume}");
+        GD.Print($"start_maximized: {startMaximized}");
+        GD.Print($"color_a: {colorA}");
+        GD.Print($"color_b: {colorB}");
+
         return new Settings
         {
             MasterVolume = masterVolume,
@@ -207,7 +214,7 @@ public partial class SettingsHandler : Node
     private void SetWindowMaximized()//(int multiplier)
     {
         //DisplayServer.WindowSetSize(Vector2I(400,240)*multiplier);
-        if (fullScreenCheckbox.GetChecked())
+        if (fullScreenCheckbox.State)
         {
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
         }

@@ -158,4 +158,5 @@ shape = SubResource("RectangleShape2D_hpq1c")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1248225055]
 stream = ExtResource("4_jrdb5")
 pitch_scale = 0.69
+max_distance = 256.0
 bus = &"SFX"

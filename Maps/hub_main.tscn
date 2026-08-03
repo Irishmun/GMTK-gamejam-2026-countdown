@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://bs46tcns2aiet" path="res://prefabs/Options/ent_button_accept.tscn" id="23_pijyv"]
 [ext_resource type="PackedScene" uid="uid://dw36cew8lmdi5" path="res://prefabs/Options/ent_button_reset.tscn" id="24_r37wx"]
 [ext_resource type="AudioStream" uid="uid://bo648l7fh175w" path="res://Assets/sounds/temp/LaForetdesReves.wav" id="25_sti0v"]
+[ext_resource type="Texture2D" uid="uid://beap3lj13fwr6" path="res://Assets/Sprites/version_background.png" id="26_pfr3g"]
+[ext_resource type="FontFile" uid="uid://bh6sjra6rjmuf" path="res://Assets/fonts/apple_kid.ttf" id="27_biwx5"]
+[ext_resource type="Script" uid="uid://6jvlirxvi81c" path="res://source/UI/VersionLabel.cs" id="28_pfr3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ejkc"]
 size = Vector2(399, 239)
@@ -35,6 +38,10 @@ startMaximized = true
 masterVolume = 50.0
 ambientVolume = 50.0
 metadata/_custom_type_script = "uid://yvsfqbcadv7s"
+
+[sub_resource type="LabelSettings" id="LabelSettings_in13f"]
+font = ExtResource("27_biwx5")
+font_color = Color(0.9411765, 0.9647059, 0.9411765, 1)
 
 [node name="hub_main" type="Node2D" unique_id=863028367]
 y_sort_enabled = true
@@ -116,7 +123,7 @@ script = ExtResource("13_dlgkt")
 masterVolumeSlider = NodePath("Slider_MasterVol")
 sfxVolumeSlider = NodePath("Slider_SFXVol")
 backgroundVolumeSlider = NodePath("Slider_BackVol")
-fullScreenCheckbox = NodePath("Checkbox_fullscreen")
+fullScreenCheckbox = NodePath("Checkbox_fullscreen/ent_switch")
 colorAPickButton = NodePath("ent_ColorButtonA")
 colorBPickButton = NodePath("ent_ColorButtonB")
 defaultSettings = SubResource("Resource_r51m6")
@@ -271,6 +278,48 @@ stream = ExtResource("25_sti0v")
 autoplay = true
 bus = &"Background"
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=310197435]
+material = ExtResource("5_l7tes")
+position = Vector2(376, 232)
+texture = ExtResource("26_pfr3g")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Sprite2D" unique_id=489588868]
+material = ExtResource("5_l7tes")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -14.0
+offset_right = -1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Sprite2D/SubViewportContainer" unique_id=1997634504]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(24, 12)
+render_target_update_mode = 4
+
+[node name="Label" type="Label" parent="Sprite2D/SubViewportContainer/SubViewport" unique_id=493338734]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.5
+offset_right = -2.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0.0.0"
+label_settings = SubResource("LabelSettings_in13f")
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("28_pfr3g")
+
 [connection signal="ButtonActivated" from="ButtonHandler/ent_button_start" to="ButtonHandler" method="HandleButtonActivated"]
 [connection signal="ButtonActivated" from="ButtonHandler/ent_button_quit" to="ButtonHandler" method="HandleButtonActivated"]
 [connection signal="BackgroundVolumeChanged" from="OptionsHandler" to="OptionsHandler/Slider_BackVol" method="SetValue"]
@@ -278,6 +327,7 @@ bus = &"Background"
 [connection signal="ColorBIndexChanged" from="OptionsHandler" to="OptionsHandler/ent_ColorButtonB" method="SetIndex"]
 [connection signal="MasterVolumeChanged" from="OptionsHandler" to="OptionsHandler/Slider_MasterVol" method="SetValue"]
 [connection signal="SfxVolumeChanged" from="OptionsHandler" to="OptionsHandler/Slider_SFXVol" method="SetValue"]
+[connection signal="StartMaximizedChanged" from="OptionsHandler" to="OptionsHandler/Checkbox_fullscreen/ent_switch" method="SetVisuals"]
 [connection signal="OnValueChanged" from="OptionsHandler/Slider_MasterVol" to="OptionsHandler/Slider_MasterVol/EntPercentage" method="SetTextFromFloat"]
 [connection signal="OnValueChanged" from="OptionsHandler/Slider_SFXVol" to="OptionsHandler/Slider_SFXVol/EntPercentage" method="SetTextFromFloat"]
 [connection signal="OnValueChanged" from="OptionsHandler/Slider_BackVol" to="OptionsHandler/Slider_BackVol/EntPercentage" method="SetTextFromFloat"]

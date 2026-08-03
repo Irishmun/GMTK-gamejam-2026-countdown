@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Collections.Generic;
 
 public partial class ToggleSwitch : Area2D
 {
@@ -15,9 +13,21 @@ public partial class ToggleSwitch : Area2D
 
     public void Interact()
     {
-        _state = !_state;
+        SetVisuals(!_state);
+    }
+
+    public void SetVisuals(bool enabled)
+    {
+        if (_state == enabled)
+        {
+            return;
+        }
+
+        _state = enabled;
         audio.Play();
         EmitSignalSwitchToggled(_state);
-        sprite.Frame = _state? pressedFrame: releasedFrame;
+        sprite.Frame = _state ? pressedFrame : releasedFrame;
     }
+
+    public bool State { get => _state; set => SetVisuals(value); }
 }
